@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Lifterror;
 class IndexController extends Controller
@@ -9,20 +9,38 @@ class IndexController extends Controller
 {
  public function search(Request $request)
    {
+    
+    $date = $request->Date;
+    $date1=$request->Date1;
+   
+
+    if(!$date1){     //костыль, как без него не придумал
+       $date1=$date;
+    }
+   
+   
 
     $address= $request->Address;
     $typeOfLift = $request->TypeOfLift;
-    $date = $request->Date;
     $front= $request->Front;  
-    $date1 = $request->Date1;
+    
     dump($date1);
+
+
+
+    $date3 = Carbon::now()->subDay(3);// получение текущего дня -3
+    $dateTomorrow= Carbon::now();// получение текущего дня 
+    dump($dateTomorrow);
+    
+
+
     if($address or $typeOfLift or $date or $front){
 
       $lifterror = lifterror::
-           when($date, function ($query) use ($date, $date1) {
+           when($date,  function ($query) use ($date, $date1) {
                     return $query->whereBetween( 'Date',array($date, $date1)); })  // поиск по дате 
     
-           ->when($address, function ($query) use ($address) {
+          ->when($address, function ($query) use ($address) {
                     return $query->where('Address', '=', $address);}) //по адресу
             
           ->when($front, function ($query) use ($front) {
@@ -30,10 +48,13 @@ class IndexController extends Controller
 
            -> when($typeOfLift, function ($query) use ($typeOfLift) {
                       return $query->where('TypeOfLift', '=', $typeOfLift);})  //тип лифта
-         
+         ->orderBy('Date', 'desc')
          ->get();
     }else{
-        $lifterror=lifterror::all(); 
+
+        $lifterror=lifterror::whereBetween( 'Date',array($date3, $dateTomorrow))
+        ->orderBy('Date', 'desc')
+        ->get(); 
     }
    
      
@@ -49,13 +70,12 @@ class IndexController extends Controller
    		return view('add-content');
    }
    public function store(Request $request){
-   	$data = $request->all();
-   	dump($data);
+   	$data = $request->all();   	
    	$lifterror= new lifterror;
-   	$lifterror->fill($data);    
-   	dump($lifterror);
+   	$lifterror->fill($data);  
+   	
    	$lifterror-> save();
-   	return redirect('/');
+   	return redirect('page/add');
     }
 
  

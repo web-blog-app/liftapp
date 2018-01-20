@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class lifterror extends Model
 {
@@ -12,9 +13,8 @@ class lifterror extends Model
    											'TypeOfLift', 
    											'TypeOfError',
     										'Work',
-     										'Notice'];
+      									'Notice'];
 
 
-
-
+ 
 }
