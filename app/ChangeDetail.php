@@ -5,16 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class Lifterror extends Model
+class Changedetail extends Model
 {
- protected $fillable= [ 'date',
+
+protected $fillable= [ 
   											'address',
   											'front',
    											'typeOfLift', 
-   											'typeOfError',
-    										'work',
+   											
+    										'detail',
       									'notice'];
-
 
  
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLifterrorsTable extends Migration
+class CreateChangeDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreateLifterrorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lifterrors', function (Blueprint $table) {
+       Schema::create('changeDetails', function (Blueprint $table) {
             $table->increments('id');            
             $table->date('date');
-            $table->string('address');
+            $table->string('address'); 
             $table->string('front');
             $table->string('typeOfLift');
-            $table->string('typeOfError');
-            $table->text('work');
+                        
+            $table->string('detail');                     
             $table->string('notice');
             $table->timestamps();
+            
         });
-           
     }
 
     /**
@@ -34,6 +34,6 @@ class CreateLifterrorsTable extends Migration
      */
     public function down()
     {
-       Schema::dropIfExists('lifterrors');
+        Schema::dropIfExists('changeDetails');
     }
 }

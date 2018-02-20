@@ -1,11 +1,17 @@
-@extends('layout.site') 
+ 
 
-@section('content')
+<?php $__env->startSection('header'); ?>
 
-<form method="POST" action="{{route('liftStore')}}">
-<input type="date" name="Date" placeholder="Введите дату:" >
+<?php echo $__env->make('site.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
-<select size="1"  name="Address">
+<?php echo $__env->yieldSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<form method="POST" action="<?php echo e(route('liftStore')); ?>">
+<input type="date" name="date" placeholder="Введите дату:" >
+
+<select size="1"  name="address">
     <option selected disabled>Выберите адрес дома:</option>
     <option value="Оптиков 45">Оптиков 45</option>    
     <option value="Оптиков 49">Оптиков 49</option>
@@ -20,7 +26,7 @@
     <option value="Туристская Лыжная 10">Лыжная 10</option>
 </select>
 
-<select size="1"  name="Front">
+<select size="1"  name="front">
     <option selected disabled>Выберите № парадной:</option>
     <option value="1">1 парадная</option>    
     <option value="2">2 парадная</option>
@@ -31,7 +37,7 @@
     <option value="7">7 парадная</option>
     <option value="8">8 парадная</option>  
 </select>
-<select size="1"  name="TypeOfLift">
+<select size="1"  name="typeOfLift">
     <option selected disabled>Выберите вид лифта:</option>
     <option value="Пассажирский">Пассажирский</option>    
     <option value="Грузовой">Грузовой</option>
@@ -40,11 +46,13 @@
     <option value="Грузовой">Правый грузовой</option>
    </select>
 
-<input type="text" name="TypeOfError" placeholder="Номер шибки:">
-<input type="text" name="Work" placeholder="Проделанная работа:" >
-<input type="text" name="Notice" placeholder="Пометка механник:">
+<input type="text" name="typeOfError" placeholder="Номер шибки:">
+<input type="text" name="work" placeholder="Проделанная работа:" >
+<input type="text" name="notice" placeholder="Пометка механник:">
  <button type="submit">Отправить</button>
- {{csrf_field()}}
+ <?php echo e(csrf_field()); ?>
+
 </form>
 
-@endsection
+<?php echo $__env->yieldSection(); ?>
+<?php echo $__env->make('layout.site', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -11,15 +11,36 @@
 |
 */
 
+Route::get('/', 'IndexController@homeShow'
+);
+Route::post('workUpdate', 'IndexController@workUpdate'
+)-> name('workUpdate');
 
-Route::get('/', 'IndexController@search'
+Route::post('addLift', 'IndexController@addLift'
+)-> name('liftStore');
+
+
+Route::get('requestBook', 'IndexController@lifterrorShow'
+);
+
+ Route::post('requestBook', 'IndexController@search'
 )-> name('search');
 
-Route::get('page/add', 'IndexController@add'
+
+
+Route::get('detail', 'IndexController@detailShow'
 );
-Route::post('page/add', 'IndexController@store'
-) -> name('liftStore');
+Route::post('detailUpdate', 'IndexController@detailUpdate'
+)-> name('detailUpdate');
+
+Route::post('addDetail', 'IndexController@addDetail'
+)-> name('addDetail');
 
 
 
+Route::get('changeDetail', 'IndexController@chengeDetailShow'
+);
+
+Route::post('addChengeDetail', 'IndexController@addChengeDetail'
+)-> name('addChengeDetail');
 

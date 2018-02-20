@@ -4,13 +4,13 @@
 	<meta charset="UTF-8">
 	<title>Master</title>
 	<link href="css/app.css" rel="stylesheet">
- <link rel="stylesheet" href="{{ asset('css/main.css') }}">
- <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">    
- <link rel="stylesheet" href="{{ asset('css/ap.css') }}">
+ <link rel="stylesheet" href="<?php echo e(asset('css/main.css')); ?>">
+ <link rel="stylesheet" href="<?php echo e(asset('css/fonts.css')); ?>">    
+ <link rel="stylesheet" href="<?php echo e(asset('css/ap.css')); ?>">
 <!-- календарь--> 
- <link rel="stylesheet" href="{{ asset('css/tcal.css') }}">
+ <link rel="stylesheet" href="<?php echo e(asset('css/tcal.css')); ?>">
 <!-- переключатель меню--> 
- <link rel="stylesheet" href="{{ asset('css/toggleMenu.css') }}">
+ <link rel="stylesheet" href="<?php echo e(asset('css/toggleMenu.css')); ?>">
 
 </head>
 <body>
@@ -52,7 +52,7 @@
 </header >	 
     <div class="content">
 
-      @yield('content')
+      <?php echo $__env->yieldContent('content'); ?>
 
     </div>
 
@@ -70,8 +70,8 @@
 
 
 
- <script src="{{ asset('js/app.js') }}"></script>
- <script src="{{ asset('js/common.js') }}"></script>
- <script src="{{ asset('js/tcal.js') }}"></script>
+ <script src="<?php echo e(asset('js/app.js')); ?>"></script>
+ <script src="<?php echo e(asset('js/common.js')); ?>"></script>
+ <script src="<?php echo e(asset('js/tcal.js')); ?>"></script>
 </body>
 </html>
