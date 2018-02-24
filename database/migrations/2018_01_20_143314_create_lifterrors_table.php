@@ -16,12 +16,13 @@ class CreateLifterrorsTable extends Migration
         Schema::create('lifterrors', function (Blueprint $table) {
             $table->increments('id');            
             $table->date('date');
-            $table->string('address');
-            $table->string('front');
-            $table->string('typeOfLift');
-            $table->string('typeOfError');
-            $table->text('work');
-            $table->string('notice');
+            $table->string('address', 100);
+            $table->string('front', 50);
+            $table->string('typeOfLift', 50);
+            $table->string('typeOfError')->nullable();
+            $table->string('condition', 50);
+            $table->text('work')->nullable();
+            $table->string('notice')->nullable();
             $table->timestamps();
         });
            

@@ -1,9 +1,12 @@
  
 
 <?php $__env->startSection('content'); ?>
-<div class="container">
+
 <div class="wrapper_open">
-<button  type="button" class=" btn color_but_blue btn_open">Поиск по базе данных</button> 
+<button  type="button" class=" btn color_but_red btn_open">
+  <i class="fa fa-search" aria-hidden="true"></i>
+Поиск по базе данных
+</button> 
 <form class="form_hidden" method="post" action="<?php echo e(route('search')); ?>">
 <div class="row">
   <div class="col-sm-2">
@@ -45,28 +48,31 @@
 <div class="col-sm-2">  
 <select class="form-control"  size="1"  name="typeOfLift">
     <option selected disabled>Тип лифта:</option>
-    <option value="Пассажирский">Пассажирский</option>    
-    <option value="Грузовой">Грузовой</option>
-    <option value="Пожарный">Пожарный</option>
+    <option value="Пасс.">Пассажирский</option>    
+    <option value="Груз.">Грузовой</option>
+    <option value="Пож.">Пожарный</option>
+    <option value="Лев_груз.">Левый грузовой</option>
+    <option value="Прав_груз.">Правый грузовой</option>
    </select>
    </div>
    <div class="col-sm-2">
- <button class="btn color_but_red" type="submit">Поиск</button>
+ <button class="btn color_but_blue" type="submit">
+    <i class="fa fa-paper-plane-o" aria-hidden="true fa-lg"></i>
+ Поиск
+</button>
  <?php echo e(csrf_field()); ?>
 
  </div>
 </form>
 </div>
-</div>
 
-<div class="container">  
+
 <div class="table-responsive-sm">
 <table class="table  table-hover" >
   <thead >
     <tr>
       <th scope="col">Дата поломки</th>
-      <th scope="col">Адрес дома-№пар.</th>      
-      <th scope="col">Тип лифта</th>
+      <th scope="col">Адрес дома - №пар.-Лифт</th>         
       <th scope="col">Номер ошибки</th>
       <th scope="col">Записки механика</th>
       <th scope="col">Проделанная работа</th>      
@@ -76,8 +82,7 @@
     <?php $__currentLoopData = $lifts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lift): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <tr>
       <td><?php echo e($lift ->date); ?></td>
-      <td><?php echo e($lift ->address); ?>-<?php echo e($lift ->front); ?></td> 
-      <td><?php echo e($lift ->typeOfLift); ?></td>  
+      <td><?php echo e($lift ->address); ?>-<?php echo e($lift ->front); ?> - <?php echo e($lift ->typeOfLift); ?></td>      
       <td><?php echo e($lift ->typeOfError); ?></td>  
       <td><?php echo e($lift ->notice); ?></td>
       <td class="workM"><?php echo e($lift ->work); ?></td>
@@ -89,7 +94,7 @@
  </div> 
 
 </div>
-</div>
+
 <?php $__env->stopSection(); ?>
 
 

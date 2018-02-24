@@ -15,13 +15,12 @@ class CreateChangeDetailsTable extends Migration
     {
        Schema::create('changeDetails', function (Blueprint $table) {
             $table->increments('id');            
-            $table->date('date');
-            $table->string('address'); 
-            $table->string('front');
-            $table->string('typeOfLift');
-                        
-            $table->string('detail');                     
-            $table->string('notice');
+            $table->timestamp('date');
+            $table->string('address', 100); 
+            $table->string('front', 50);
+            $table->string('typeOfLift', 50);                        
+            $table->string('detail', 150);                     
+            $table->string('notice', 255)->nullable();
             $table->timestamps();
             
         });

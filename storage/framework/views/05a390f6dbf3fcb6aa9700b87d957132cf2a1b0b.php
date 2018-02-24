@@ -11,6 +11,7 @@
  <link rel="stylesheet" href="<?php echo e(asset('css/tcal.css')); ?>">
 <!-- переключатель меню--> 
  <link rel="stylesheet" href="<?php echo e(asset('css/toggleMenu.css')); ?>">
+ <link rel="stylesheet" href="<?php echo e(asset('lib/font-awesome/css/font-awesome.min.css')); ?>">
 
 </head>
 <body>
@@ -23,10 +24,30 @@
 	<div class="col-md-9 col-sm-10">
       <nav>
         <ul class=" menu row">
-          <li class="col-md-2 col-sm-2"><a href="/laravel/public/">текущие дела</a></li>
-          <li class="col-md-2 col-sm-2"><a href="/laravel/public/requestBook">книга заявок</a></li>
-          <li class="col-md-3 col-sm-3"><a href="/laravel/public/detail">необходимые детали</a></li>
-          <li class="col-md-2 col-sm-3"><a href="/laravel/public/changeDetail">замена деталей</a></li>          
+          <li class="col-md-2 col-sm-2">
+            <a class="active" href="/laravel/public/">
+            <i class="fa fa-bell fa-lg" aria-hidden="true"></i>
+          текущие дела
+        </a>
+      </li>
+          <li class="col-md-2 col-sm-2">
+          <a href="/laravel/public/requestBook">
+            <i class="fa fa-book fa-lg" aria-hidden="true"></i>
+           книга заявок
+          </a>
+        </li>
+          <li class="col-md-3 col-sm-3">
+            <a href="/laravel/public/detail">
+              <i class="fa fa-microchip fa-lg" aria-hidden="true"></i>
+            необходимые детали
+          </a>
+        </li>
+          <li class="col-md-2 col-sm-3">
+            <a href="/laravel/public/changeDetail">              
+              <i class="fa fa-refresh fa-lg" aria-hidden="true"></i>
+            замена деталей
+          </a>
+        </li>          
         </ul>
       </nav>
   </div>
@@ -42,20 +63,39 @@
 
 <div class="top-menu">
 <ul>
-  <li><a href="/laravel/public/">текущие дела</a></li>
-  <li><a href="/laravel/public/requestBook">книга заявок</a></li>
-  <li><a href="/laravel/public/detail">необходимые детали</a></li>
-  <li><a href="/laravel/public/changeDetail">замена деталей</a></li>
+  <li><a href="/laravel/public/">
+    <i class="fa fa-book fa-lg" aria-hidden="true"></i>
+  текущие дела
+</a>
+</li>
+  <li><a href="/laravel/public/requestBook">
+    <i class="fa fa-book fa-lg" aria-hidden="true"></i>
+  книга заявок
+    </a>
+    </li>
+  <li>
+    <a href="/laravel/public/detail">
+     <i class="fa fa-microchip fa-lg" aria-hidden="true"></i>
+      необходимые детали
+    </a>
+  </li>
+  <li>
+    <a href="/laravel/public/changeDetail">
+     <i class="fa fa-refresh fa-lg" aria-hidden="true"></i>
+    замена деталей
+  </a>
+</li>
 </ul>      
 </div>
 </div>
-</header >	 
-    <div class="content">
+</header>
+ <div class="content">
+    <div class="container">
 
       <?php echo $__env->yieldContent('content'); ?>
 
     </div>
-
+  </div>
 <footer>
   
   <div class="row">

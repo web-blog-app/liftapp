@@ -14,7 +14,7 @@ class IndexController extends Controller
    public function homeShow(){
    
       $current = Lifterror:: whereNull('work')
-        -> orwhere('notice','=','остановлен')         
+        -> orwhere('condition','=','остановлен')         
         ->get();
        
 
@@ -109,7 +109,7 @@ public function detailShow(){
 
   
 
-  $detail = Detail:: where('pay','=','Ожидание')         
+  $detail = Detail:: where('condition','=','Ожидание')         
                       ->get();
    
     return view('details') -> with ([
@@ -163,7 +163,7 @@ public function chengeDetailShow(){
     $detail= new Changedetail;
     $detail->fill($data);    
     $detail-> save();
-    return redirect('detail');
+    return redirect('changeDetail');
     }
  
 

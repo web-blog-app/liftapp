@@ -12,6 +12,7 @@ class Lifterror extends Model
   											'front',
    											'typeOfLift', 
    											'typeOfError',
+   											'condition',   											
     										'work',
       									'notice'];
 

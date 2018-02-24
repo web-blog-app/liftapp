@@ -9,8 +9,9 @@ class Detail extends Model
      protected $fillable= [ 'date',
   											'address',
   											'number',
+  											'detailName',
    											'notice',
-   											'pay' 
+   											'condition' 
    							      ];
 
 }

@@ -26,13 +26,5 @@ $('.wrapper_open').on('click', '.btn_open', function() {
 		$(this).toggleClass('add_elevator_show').siblings('.form_hidden').slideToggle(0);
 	});
 
-$('.search_elevator').on('click', '.open_search', function() {
-		$(this).toggleClass('add_elevator_show').siblings('.search').slideToggle(0);
-	});
-
-$('.add_detail').on('click', '.open_detail', function() {
-		$(this).toggleClass('add_elevator_show').siblings('.form_detail').slideToggle(0);
-	});
-
 
 }); 
