@@ -13,6 +13,7 @@ class CreateLifterrorsTable extends Migration
      */
     public function up()
     {
+        Schema::defaultStringLength(191);
         Schema::create('lifterrors', function (Blueprint $table) {
             $table->increments('id');            
             $table->date('date');

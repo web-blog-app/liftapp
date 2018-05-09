@@ -2,6 +2,7 @@
 
 @section('content')
 
+<div class="main_table">
 <div class="wrapper_open">
 <button  type="button" class=" btn color_but_red btn_open">
   <i class="fa fa-search" aria-hidden="true"></i>
@@ -17,20 +18,22 @@
 </select>
 </div>
 <div class="col-sm-2">
-<select class="form-control"  size="1"  name="address">
-    <option selected disabled>Адрес дома:</option>
-    <option value="Оптиков 45">Оптиков 45</option>    
-    <option value="Оптиков 49">Оптиков 49</option>
-    <option value="Оптиков 50">Оптиков 50</option>
-    <option value="Оптиков 52">Оптиков 52</option>
-    <option value="Туристская 11">Туристская 11</option>
-    <option value="Туристская 15">Туристская 15</option>
-    <option value="Туристская 18">Туристская 18</option>
-    <option value="Туристская 28">Туристская 28</option>
-    <option value="Туристская Лыжная 3">Лыжная 3</option>
-    <option value="Туристская Лыжная 4">Лыжная 4</option>
-    <option value="Туристская Лыжная 10">Лыжная 10</option>
-</select>
+ <select class="form-control form-control-sm" size="1" name="address" required>
+      <option value="" selected disabled>Адрес дома:</option>
+      <option value="Оптиков 45 к1">Оптиков 45 к1</option>
+      <option value="Оптиков 45 к2">Оптиков 45 к2</option>      
+      <option value="Оптиков 49">Оптиков 49</option>
+      <option value="Оптиков 50">Оптиков 50</option>
+      <option value="Оптиков 52">Оптиков 52</option>
+      <option value="Туристская 11">Туристская 11</option>
+      <option value="Туристская 15">Туристская 15</option>
+      <option value="Туристская 18">Туристская 18</option>
+      <option value="Туристская 28">Туристская 28</option>
+      <option value="Лыжная 3">Лыжная 3</option>
+      <option value="Лыжная 4">Лыжная 4</option>
+      <option value="Лыжная 10">Лыжная 10</option>
+      <option value="Мебельная 19">Мебельная 19</option>
+    </select>
 </div>
 <div class="col-sm-2">  
 <select class="form-control"  size="1"  name="front">
@@ -42,7 +45,10 @@
     <option value="5">5 парадная</option>
     <option value="6">6 парадная</option>
     <option value="7">7 парадная</option>
-    <option value="8">8 парадная</option>  
+    <option value="8">8 парадная</option>
+    <option value="9">9 парадная</option>
+    <option value="10">10 парадная</option>
+    <option value="11">11 парадная</option>    
 </select>
 </div>
 <div class="col-sm-2">  
@@ -64,35 +70,37 @@
  </div>
 </form>
 </div>
+</div>
 
-
-<div class="table-responsive-sm">
+<div class="table-responsive-sm " >
 <table class="table  table-hover" >
   <thead >
     <tr>
-      <th scope="col">Дата поломки</th>
-      <th scope="col">Адрес дома - №пар.-Лифт</th>         
-      <th scope="col">Номер ошибки</th>
-      <th scope="col">Записки механика</th>
-      <th scope="col">Проделанная работа</th>      
+      <th scope="col">Дата</th>
+      <th scope="col">Адрес</th>         
+      <th scope="col">Ошибка</th>
+      <th class="notice" scope="col">Заметка</th>
+      <th scope="col">Работа</th>      
     </tr>
   </thead>
   <tbody>
     @foreach($lifts as $lift)
     <tr>
-      <td>{{$lift ->date}}</td>
-      <td>{{$lift ->address}}-{{$lift ->front}} - {{$lift ->typeOfLift}}</td>      
-      <td>{{$lift ->typeOfError}}</td>  
-      <td>{{$lift ->notice}}</td>
+      <td class="data">{{ Carbon\Carbon::parse($lift ->date)->format('d.m.Y ')}}</td>
+      <td class="address">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</td>      
+      <td class=typeError>{{$lift ->typeOfError}}</td>  
+      <td class="notice">{{$lift ->notice}}</td>
       <td class="workM">{{$lift ->work}}</td>
     </tr>
     @endforeach
   </tbody>
 </table>
  </div>
- </div> 
+  {{$lifts->links()}}
 
+ </div> 
 </div>
+
 
 @endsection
 

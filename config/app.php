@@ -14,6 +14,13 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+
+    /*
+    * Backpack Service Providers...
+    */
+
+    Backpack\Base\BaseServiceProvider::class,
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -51,7 +58,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://liftbook24.su'),
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +174,8 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+
+         TCG\Voyager\VoyagerServiceProvider::class,
 
         /*
          * Application Service Providers...

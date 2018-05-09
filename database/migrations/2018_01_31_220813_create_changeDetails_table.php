@@ -13,7 +13,8 @@ class CreateChangeDetailsTable extends Migration
      */
     public function up()
     {
-       Schema::create('changeDetails', function (Blueprint $table) {
+       Schema::defaultStringLength(191);
+       Schema::create('changedetails', function (Blueprint $table) {
             $table->increments('id');            
             $table->timestamp('date');
             $table->string('address', 100); 
@@ -33,6 +34,6 @@ class CreateChangeDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('changeDetails');
+        Schema::dropIfExists('changedetails');
     }
 }

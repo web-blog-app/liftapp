@@ -13,13 +13,10 @@
 
     <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-        <ol>
-          <li>нужно сделать</li>
-          <li>нужно сделать</li>
-          <li>нужно сделать</li>
-          <li>нужно сделать</li>
-          <li>нужно сделать</li>
-        </ol>
+        <ol>         
+          <?php $__currentLoopData = $tasks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $task): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <li><span><?php echo e(Carbon\Carbon::parse($task ->  created_at)->format('d-m-Y ')); ?></span> - <?php echo e($task -> task); ?></li>          
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>        
       </div>
     </div>
   </div>
@@ -33,11 +30,15 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
          <ol>
-          <li>нужно сделать</li>
-          <li>нужно сделать</li>
-          <li>нужно сделать</li>
-          <li>нужно сделать</li>
-          <li>нужно сделать</li>
+        
+          <?php $__currentLoopData = $additionalWorks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $additionalWork): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <li>
+            <span><?php echo e(Carbon\Carbon::parse($additionalWork -> created_at)->format('d-m-Y ')); ?></span> - <?php echo e($additionalWork -> additionalWorks); ?>
+
+            
+          </li>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+         
         </ol>
       </div>
     </div>
@@ -62,7 +63,8 @@
   <div class="col-sm-6 col-md-2 ">
     <select class="form-control form-control-sm" size="1" name="address" required>
       <option value="" selected disabled>Адрес дома:</option>
-      <option value="Оптиков 45">Оптиков 45</option>    
+      <option value="Оптиков 45 к1">Оптиков 45 к1</option>
+      <option value="Оптиков 45 к2">Оптиков 45 к2</option>      
       <option value="Оптиков 49">Оптиков 49</option>
       <option value="Оптиков 50">Оптиков 50</option>
       <option value="Оптиков 52">Оптиков 52</option>
@@ -77,7 +79,7 @@
   </div>
   <div class="col-sm-6 col-md-2 ">
     <select class="form-control form-control-sm" size="1"  name="front" required>
-      <option value=""  selected disabled> № парадной:</option>
+      <option selected disabled> № парадной:</option>
       <option value="1">1 парадная</option>    
       <option value="2">2 парадная</option>
       <option value="3">3 парадная</option>
@@ -85,18 +87,21 @@
       <option value="5">5 парадная</option>
       <option value="6">6 парадная</option>
       <option value="7">7 парадная</option>
-      <option value="8">8 парадная</option>  
+      <option value="8">8 парадная</option>
+      <option value="9">9 парадная</option>
+      <option value="10">10 парадная</option>
+      <option value="11">11 парадная</option>  
     </select>
   </div>
 
   <div class="col-sm-6 col-md-2">
     <select class="form-control form-control-sm" size="1"  name="typeOfLift" required>
       <option value="" selected disabled>Вид лифта:</option>
-      <option value="Пасс.">Пассажирский</option>    
-      <option value="Груз.">Грузовой</option>
-      <option value="Пож.">Пожарный</option>
-      <option value="Лев_груз.">Левый грузовой</option>
-      <option value="Прав_груз">Правый грузовой</option>
+      <option value="пасс.">Пассажирский</option>    
+      <option value="груз.">Грузовой</option>
+      <option value="пож.">Пожарный</option>
+      <option value="лев_груз.">Левый грузовой</option>
+      <option value="прав_груз">Правый грузовой</option>
     </select>
  </div>
 
@@ -135,49 +140,45 @@
 </div>          
 
 <div class="row">
+  <div class="wrapper_lift">
 <?php $__currentLoopData = $lifts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lift): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <div class="col-md-4 col-sm-6 ">
-
-<div class="wrapper ">
+<div class="wrapper">
   <div class="wrapper_wp ">
-
-  <div class="date">Дата поломки: <span><?php echo e($lift -> date); ?></span></div>
+  <div class="date">Дата заявки:<span><?php echo e(Carbon\Carbon::parse($lift -> date)->format('d-m-Y ')); ?></span></div>
   <div class="address">Адрес: <span><?php echo e($lift -> address); ?>-<?php echo e($lift -> front); ?>-<?php echo e($lift -> typeOfLift); ?></span></div>
   <div class="error">№ ошибки: <span><?php echo e($lift -> typeOfError); ?></span> </div>
-  <div class="notice">Текущее состояние лифта: <span><?php echo e($lift -> condition); ?></span></div>
-  <div class="notice">Заметка механника: <span><?php echo e($lift -> notice); ?></span></div>
+  <div class="condition">Cостояние лифта: <span><?php echo e($lift -> condition); ?></span></div>
+  <div class="notice">Заметка механника: 
+    <span><?php echo e($lift -> notice); ?></span>
+  </div>
 
-  
-  
-    <form method="post"  action="<?php echo e(route('workUpdate')); ?>">
-
-      <div class="form-group">
-     <label for="exampleFormControlInput1">Проделанная работа:</label>
-     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Проделанная работа:" name="work" required>
-  </div>     
-
+<form method="post"  action="<?php echo e(route('workUpdate')); ?>">
+    <div class="form-group">
+    <label for="exampleFormControlInput1">Проделанная работа:</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Проделанная работа:" name="work" required>
+  </div> 
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Изменение состояния лифта:</label>
+    <label for="exampleFormControlSelect1">Cостояние лифта:</label>
     <select class="form-control form-control-sm" id="exampleFormControlSelect1" size="1"  name="notice">
-      <option selected disabled>Выбрать состояние лифта:</option>
+      <option selected disabled>Изменить состояние лифта:</option>
       <option value="Запущен">Запущен</option>
       <option value="Остановлен">Остановлен</option>      
     </select>
-  </div>     
-      
+  </div> 
   <input type="hidden" name='id' value="<?php echo e($lift -> id); ?>"> 
-
    <button class="btn color_but_blue" type="submit">
     <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
        Работа сделана
      </button>
         <?php echo e(csrf_field()); ?>
 
-    </form>
+</form>
  </div>
   </div>
 </div>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+</div>
 </div>
 <?php $__env->stopSection(); ?>
 

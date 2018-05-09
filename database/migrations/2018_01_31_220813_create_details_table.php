@@ -13,13 +13,14 @@ class CreateDetailsTable extends Migration
      */
     public function up()
     {
+       Schema::defaultStringLength(191);
        Schema::create('details', function (Blueprint $table) {
             $table->increments('id');            
             $table->timestamp('date');
             $table->string('address', 100);            
             $table->string('number', 100);
             $table->string('detailName', 100);
-            $table->string('condition', 100)->default('Ожидание');            
+            $table->string('condition', 100)->default('нужно заказать');            
             $table->string('notice')->nullable();
             $table->timestamps();
             

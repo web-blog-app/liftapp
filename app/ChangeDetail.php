@@ -11,8 +11,7 @@ class Changedetail extends Model
 protected $fillable= [ 
   											'address',
   											'front',
-   											'typeOfLift', 
-   											
+   											'typeOfLift',    											
     										'detail',
       									'notice'];
 

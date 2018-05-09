@@ -11,8 +11,11 @@
 |
 */
 
+Route::group(['middleware' => 'auth'], function () {
+
 Route::get('/', 'IndexController@homeShow'
 );
+
 Route::post('workUpdate', 'IndexController@workUpdate'
 )-> name('workUpdate');
 
@@ -43,4 +46,16 @@ Route::get('changeDetail', 'IndexController@chengeDetailShow'
 
 Route::post('addChengeDetail', 'IndexController@addChengeDetail'
 )-> name('addChengeDetail');
+
+Route::get('searchChengeDetail', 'IndexController@searchChengeDetail'
+)-> name('searchChengeDetail');
+
+});
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+Auth::routes();
+
 

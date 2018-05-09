@@ -1,7 +1,10 @@
 {
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -9,6 +12,7 @@
         "illuminate/html": "^5.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+        "tcg/voyager": "^1.0",
         "twbs/bootstrap": "4.0.0"
     },
     "require-dev": {
@@ -49,5 +53,11 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
+    },
+    "repositories": {
+        "hooks": {
+            "type": "composer",
+            "url": "https://larapack.io"
+        }
     }
 }

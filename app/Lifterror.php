@@ -7,6 +7,11 @@ use Carbon\Carbon;
 
 class Lifterror extends Model
 {
+
+ 
+
+     
+
  protected $fillable= [ 'date',
   											'address',
   											'front',

@@ -5,10 +5,14 @@ body textarea:focus:required:invalid {
   box-shadow: #9B1818 0 0 0 1px;
   border-color: #9B1818;
 }
-
+h4{
+    color: rgb(0,0,0);
+    margin-left: 15px;
+}
 html,
 body{
    height: 100%;
+   weight: 100%;
 }
 
 body{
@@ -16,64 +20,83 @@ body{
   font-weight: normal;
   font-weight: normal;
   font-size: 14px;
-  min-width: 320px; 
+  min-width: 320px;
+  width:100%;
   -webkit-font-smoothing: antialised;  
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  overflow-x:hidden; 
+  overflow-x:hidden !important; 
+  display: flex;
+  flex-direction: column;
 }
 
 header{   
   background: rgba(0,0,0, .9);   
-  min-height: 60px; 
+  min-height: 100px; 
   width: 100%;
   border-bottom: 3px solid rgba(255,0,0,0.4);
 }
 
 .logo{
-  padding: 30px 0 0 20px;    
+  padding: 25px 0 0 10px;
+  display: inline-block;
 }
 
 .menu li{
    list-style-type: none;   
    padding: 50px 0  20px 0;
+   margin-left:8px;
 }
 
 .menu a {
   text-decoration: none;
   text-transform: uppercase;
   color: #fff;
+  font-size: 15px;  
 }
 
 .menu a:hover{
   color:red;
 }
+header .dropdown{
+  padding: 30px 0 0 100px;
+  text-transform: uppercase;
+  font-size: 18px ;
+  font-family: "RobotoBold", sans-serif;
+  color: white;  
+}
+header .dropdown img{
+  padding-right: 5px;
+  height: 50px;
+  width: 50px;
+}
 
-.content {
-  width: 100%;
-  min-height: 500px;
-  background: url("../img/bgElevator.png") repeat-y top center #fff;
+main {  
+  background: url("../img/bgElevator.png") repeat top center #fff;
+  flex: 1 0 auto;
+  
+}
+.main_table{
+    padding: 0 20px;
 }
 
 .wrapper_open{
-  padding: 30px 0 10px 15px;
+  padding: 30px 0 42px 15px;
+}
 
-}
-.active{
-  color: red;
-}
 .btn_open {
   margin-bottom: 10px;
 }
 
 .form_hidden {
   display: none;
-
+  
 }
  .add_elevator_show{
    background: rgba(255,255,250,1);
    border: none;
+   display:block;
 }
 .btn{  
   color:white;
@@ -87,7 +110,7 @@ header{
 .color_but_red{
   background: rgba(255,0,0,.7);   
   font-size: 16px;
-  width: 255px;
+  width: 250px;
   border-bottom: 4px solid black;
   text-align: left;
   color: white;
@@ -99,54 +122,82 @@ i{
 
 #accordion{
  margin-top: 15px;
- margin-bottom: 10px; 
+ margin-bottom: 10px;
+ margin-left: 15px;
 }
 
-#accordion .card-body ol{
-  padding-top: 12px ;  
-  text-transform: uppercase;  
+#accordion .bg_task { 
+  text-transform: uppercase;
   font-family: "RobotoBold", sans-serif;
-  background-color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.7);
+  font-size: 18px;
+  background: rgba(0,0,0,.6); 
+  border-radius:8px;
+  padding: 6px 0;  
+  
 }
-
-form{
-  padding-top: 7px;
-  padding-bottom: 8px;
+#accordion .card-body span{
+ font-family: "CleanvertisingLight", sans-serif;
+ color: rgba(255,0,0,.7);
 }
 
 #accordion form .btn{
   margin-top: 7px;
 }
+#accordion button:hover{
+  color: black;
+  background: rgba(255,0,0,.9); 
+}
 
-.wrapper{ 
+
+.nav-tabs {
+    font-size: 16px;
+    margin-left: 14px;
+    border-bottom: 3px solid  rgb(255, 255, 255);
+}
+
+.nav-tabs .nav-item a{
+    color: rgb(255, 255, 255);
+    font-family: "RobotoBold", sans-serif;
+    
+}
+
+.wrapper_lift{
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
   display: -o-flex;
-  display: flex;   
+  display: flex;
+  flex-wrap: wrap;
+  align-content:center;
+}
+.wrapper_lift .notice{
+    margin: 10px 0 5px 0;
+}
+
+.wrapper{      
   border: 2px solid black;
   border-radius: 5px;  
-  margin: 15px 10px 15px 0;
-
-
+  margin: 15px 10px 15px 0px;
   background: rgba(0,0,0,.7);
   color: white;
+  width: 320px;
 }
 
 .wrapper_wp{  
   padding: 20px;
   font-size: 15px;
 }
+
 .wrapper_wp span{
   color: while;   
   font-size: 16px;
   font-family: "RobotoBold", sans-serif;
-}
-.wrapper_wp span{
   color: rgba(255,0,0,.7);
 }
 
-.wrapper button{
+
+.wrapper_wp button{
   margin:  10px 0px;
   font-family: "RobotoBold", sans-serif;
 }
@@ -154,39 +205,42 @@ form{
   margin-bottom: 7px;
 }
 
-.table{
-background: rgba(255,255,255,0.4);
-color: #000;
-font-size: 17px;
 
+
+.table{
+background: rgba(255,255,255,0.7);
+color: #000;
+font-size: 16px;
+font-family: "RobotoRegular", sans-serif;
 }
 
 .table thead{
-  font-size: 16px;
-  color: #fff;
-  background: #000;
   font-family: "RobotoBold", sans-serif;
+  font-size: 17px;
+  color: #fff;
+  background: #000; 
 }
-.workM{
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  max-width: 300px;
-  overflow-y: hidden;
 
+.workM{  
+  max-width: 300px;
+  overflow: auto;
+  padding: 3px;
 }
+
+.pagination{
+  padding: 0;
+  margin: 0;
+}
+
 footer{
+  width:100%;
   background-color: #0e0e0e;
   min-height: 50px;
-  
+  flex: 0 0 auto;
 }
 
 .footer_text p{
   padding: 20px 30px;
-  color: #fff;
-  
- 
+  color: #fff;  
 }
 
