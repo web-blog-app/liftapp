@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Additionalwork extends Model
 {
-    protected $fillable= [ 
-        								'additionalWork',  											
-   											'pay' 
-   							      ];
+    protected $fillable= [ 'additionalWorks', 
+        					'humans',
+   							'pay' 
+   					        ];
 }

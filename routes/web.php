@@ -1,4 +1,4 @@
-<?php
+<?php<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +18,18 @@ Route::get('/', 'IndexController@homeShow'
 
 Route::post('workUpdate', 'IndexController@workUpdate'
 )-> name('workUpdate');
+
+Route::post('taskUpdate', 'IndexController@taskUpdate'
+)-> name('taskUpdate');
+
+Route::post('addTask', 'IndexController@addTask'
+)-> name('addTask');
+
+Route::post('addАdditionalWork', 'IndexController@addАdditionalWork'
+)-> name('addАdditionalWork');
+
+Route::post('additionalWorkUpdate', 'IndexController@additionalWorkUpdate'
+)-> name('additionalWorkUpdate');
 
 Route::post('addLift', 'IndexController@addLift'
 )-> name('liftStore');

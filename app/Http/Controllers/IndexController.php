@@ -7,14 +7,41 @@ use App\Lifterror;
 use App\Detail;
 use App\ChangeDetail;
 use App\Task;
-use App\AdditionalWork;
+use App\Additionalwork;
+
 
 class IndexController extends Controller
 
 {
 
    public function homeShow(){
-   
+    $date30 = Carbon::now()->subDays(30);
+    $date16 = Carbon::now()->subDays(16);
+    $date8 = Carbon::now()->subDays(8);
+    
+    
+    //   $address = Lifterror:: 
+    //              select ('address')
+    //             ->groupBy('address')
+    //             ->havingRaw('COUNT(*) > 1')
+    //             ->get();
+    
+    // $countErrorAll= Lifterror:: count();
+    
+                
+    // $countErrorLift = $address->map(function ($item, $key) {
+    //     $counts = Lifterror::
+    //         where('address','=', $item->address)
+    //         ->count();
+            
+    //      return  $counts   ;
+    //  });
+     
+     
+     
+
+     
+    
       $currentStop = Lifterror:: 
          where('condition','=','остановлен')
         ->orderBy('date', 'desc')         
@@ -30,20 +57,54 @@ class IndexController extends Controller
         ->orderBy('date', 'desc')         
         ->get();
 
-      $task = Task::where('condition','=','не выполнено')
+      $task = Task::
+          where('condition','=','не выполнено')
         ->orderBy('created_at', 'desc')         
-        ->get();
+        ->paginate(5);
 
-      $additionalWork = Additionalwork::where('pay','=','не оплачено')
+      $additionalWork = Additionalwork::
+          where('pay','=','не оплачено')
         ->orderBy('created_at', 'desc')        
         ->get();
-
+        
+    $liftAll=Lifterror::where('condition','=','недоделано')
+                         ->orWhere('condition','=','текущая заявка')
+                         ->orWhere('condition','=','остановлен')
+                          ->get();;
+                          
+        
+    $liftReturn30_5 = Lifterror:: where('date','>',$date30)
+                    ->where('condition','!=','недоделано')
+                    ->select('address','front','typeOfLift')
+                    ->groupBy('address','front','typeOfLift')
+                    ->havingRaw('COUNT(*) > 5')
+                    ->get(); 
+                    
+    $liftReturn16_3 = Lifterror:: where('date','>',$date16)
+                    ->where('condition','!=','недоделано')
+                    ->select('address','front','typeOfLift')
+                    ->groupBy('address','front','typeOfLift')
+                    ->havingRaw('COUNT(*) > 3')
+                    ->get();              
+    $liftReturn7_2 = Lifterror:: where('date','>',$date8)
+                    ->where('condition','!=','недоделано')
+                    ->select('address','front','typeOfLift')
+                    ->groupBy('address','front','typeOfLift')
+                    ->havingRaw('COUNT(*) > 2')
+                    ->get();       
+   
     return view('home')->with ([
             'liftsStop' => $currentStop,
             'liftsTime' => $currentTime,
             'lifts' => $noWork,
             'tasks' => $task,
-            'additionalWorks' => $additionalWork
+            'additionalWorks' => $additionalWork,
+            'liftAll' => $liftAll,
+            'liftReturns30_5' => $liftReturn30_5,
+            'liftReturns16_3' => $liftReturn16_3,
+            'liftReturns7_2' => $liftReturn7_2,
+            
+             
     ]);
     }
       
@@ -51,35 +112,108 @@ class IndexController extends Controller
 
  public function workUpdate(Request $request){
   $notice=$request->notice;
+  $condition=$request->condition;
   $work= $request->work;
   $id = $request->id;
   $error = $request->error;
-   
+  
   $workSave= Lifterror:: where('id','=',$id);  
     
   $workSave->when($work,  function ($query) use ($work) {
                    return $query->update(['work'=> $work]);});
-   
+                   
   $workSave->when($notice,  function ($query) use ($notice) {
-                   return $query->update(['condition'=> $notice]);});
+                   return $query->update(['notice'=> $notice]);});
+   
+  $workSave->when($condition,  function ($query) use ($condition) {
+                   return $query->update(['condition'=> $condition]);});
                    
   $workSave->when($error,  function ($query) use ($error) {
                    return $query->update(['typeOfError'=> $error]);});
-  
+                   
+    
+  \Session::flash('status', 'Работа сделана');
  
   return redirect('/');
  
  }
+ 
+  public function taskUpdate(Request $request){
+  $condition=$request->condition;
+  $id = $request->id;
+  
+  $workSave= Task :: where('id','=',$id);  
+   
+  $workSave->when($condition,  function ($query) use ($condition) {
+                   return $query->update(['condition'=> $condition]);});
+ 
+  return redirect('/');
+ 
+ }
+ 
+  public function additionalWorkUpdate(Request $request){
+  $pay=$request->pay;
+  $id = $request->id;
+  
+  $workSave= AdditionalWork :: where('id','=',$id);  
+   
+  $workSave->when($pay,  function ($query) use ($pay) {
+                   return $query->update(['pay'=> $pay]);});
+ 
+  return redirect('/');
+ 
+ }
+ 
+   public function addTask(Request $request){
+       
+    $this->validate($request, [
+        'task' => 'required'
+    ]);
+    
+    $data = $request->all();
+    $task= new Task;
+    $task->fill($data);     
+    $task-> save();
+    
+            
+\Session::flash('status', 'Новая задача успешно добавлена!');
+    
+    return redirect('/');
+    
+    }
+    
+public function addАdditionalWork(Request $request){
+       
+    $this->validate($request, [
+        'additionalWorks' => 'required',
+        'humans' => 'required'
+    ]);
+    
+    $data = $request->all(); 
+    $additionalWork= new Additionalwork;
+    $additionalWork->fill($data);     
+    $additionalWork-> save();
+    
+            
+\Session::flash('status', 'Дополнительная работа успешно добавлена!');
+    
+    return redirect('/');
+    
+    }
+
 
 public function lifterrorShow(){
-  
-  $lifterror=Lifterror:: orderBy('date', 'desc')
-      ->paginate(15)  ;
-   
-
     
-  return   view('requestBook') -> with ([
-            'lifts' => $lifterror
+    
+    $lifterror=Lifterror:: orderBy('date', 'desc')
+      ->paginate(15);
+       
+      
+   
+    return   view('requestBook') -> with ([
+            'lifts' => $lifterror,
+            
+            
    ]); 
   } 
 
@@ -119,7 +253,7 @@ public function lifterrorShow(){
            -> when($typeOfLift, function ($query) use ($typeOfLift) {
                       return $query->where('typeOfLift', '=', $typeOfLift);})  //тип лифта
          ->orderBy('date', 'desc')
-         ->paginate(10);
+         ->paginate(40);
    
     return   view('requestBook') -> with ([
             'lifts' => $lifterror
@@ -129,31 +263,49 @@ public function lifterrorShow(){
 
 
    public function addLift(Request $request){
+       
+    $this->validate($request, [
+        'date' => 'required', 
+        'address' => 'required', 
+        'front' => 'required', 
+        'typeOfLift' => 'required', 
+        'condition' => 'required'
+    ]);
+    
+    $data = $request->all();        
+    $lifterror= new Lifterror;
+    $lifterror->fill($data);    
+    $lifterror-> save();
+    
+            
+\Session::flash('status', 'Заявка успешно добавлена');
+    
+    return redirect('/');
+    
    
-   	$data = $request->all();      	
-   	$lifterror= new Lifterror;
-   	$lifterror->fill($data);   	
-   	$lifterror-> save();
-   	return redirect('/');
+    
     }
 
 public function detailShow(){
 
-  
-
-  $detailWait = Detail:: where('condition','=','ожидание')
+    $detailWait = Detail:: where('condition','=','ожидание')
                     ->get();
                     
-  $detailStart = Detail:: where('condition','=','нужно заказать')
+    $detailStart = Detail:: where('condition','=','нужно заказать')
                     ->get();
                     
     $detailsAkt = Detail:: where('condition','=','акт подписан')
+                    ->get();
+    $detailAll= Detail:: where('condition','=','акт подписан')
+                     ->orWhere('condition','=','нужно заказать')
+                     ->orWhere('condition','=','ожидание')
                     ->get();
                     
     return view('details') -> with ([
             'detailsWait' => $detailWait,
             'detailsStart' => $detailStart,
-            'detailsAkt' => $detailsAkt
+            'detailsAkt' => $detailsAkt,
+            'detailAll' => $detailAll,
    ]); 
 
     }
@@ -165,23 +317,24 @@ public function detailShow(){
     $detail= new Detail;
     $detail->fill($data);    
     $detail-> save();
+     \Session::flash('status', 'Деталь  успешно добавлена!');
     return redirect('detail');
     }
 
 public function detailUpdate(Request $request){
-  $notice= $request->notice;
+  
   $condition= $request->condition;
   $id = $request->id;
+ 
    
   $workSave= Detail:: where('id','=',$id);  
     
   $workSave->when($condition,  function ($query) use ($condition) {
                    return $query->update(['condition'=> $condition]);});
    
-  $workSave->when($notice,  function ($query) use ($notice) {
-                   return $query->update(['notice'=> $notice]);});
+
   
- 
+ \Session::flash('status', 'Деталь  успешно добавлена!');
   return redirect('detail');
  
  }
@@ -203,6 +356,7 @@ public function chengeDetailShow(){
     $detail= new Changedetail;
     $detail->fill($data);    
     $detail-> save();
+    \Session::flash('status', 'Выполненная работа успешно добавлена');
     return redirect('changeDetail');
     }
 
@@ -231,16 +385,16 @@ public function chengeDetailShow(){
 
     $detail = Changedetail::
            when($date,  function ($query) use ( $date1, $date2) {
-                    return $query->whereBetween( 'date',array($date2, $date1)); })  // поиск по дате 
+                    return $query->whereBetween( 'date',array($date2, $date1)); }) 
     
           ->when($address, function ($query) use ($address) {
-                    return $query->where('address', '=', $address);}) //по адресу
+                    return $query->where('address', '=', $address);}) 
             
           ->when($front, function ($query) use ($front) {
-                    return $query->where('front', '=', $front);}) // по парадной
+                    return $query->where('front', '=', $front);})
 
            -> when($typeOfLift, function ($query) use ($typeOfLift) {
-                      return $query->where('typeOfLift', '=', $typeOfLift);})  //тип лифта
+                      return $query->where('typeOfLift', '=', $typeOfLift);}) 
          ->orderBy('date', 'desc')
          ->paginate(10);
    
