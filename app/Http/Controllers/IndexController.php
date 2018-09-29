@@ -13,35 +13,29 @@ use App\Additionalwork;
 class IndexController extends Controller
 
 {
+   public function transmittingShow(){         
+   
+    return view('transmitting') -> with ([      
+   ]); 
+  }
+
+  public function managerShow(){         
+   
+    return view('manager') -> with ([      
+   ]); 
+  }
+
+    public function supplyShow(){         
+   
+    return view('supply') -> with ([      
+   ]); 
+  }
 
    public function homeShow(){
     $date30 = Carbon::now()->subDays(30);
     $date16 = Carbon::now()->subDays(16);
     $date8 = Carbon::now()->subDays(8);
-    
-    
-    //   $address = Lifterror:: 
-    //              select ('address')
-    //             ->groupBy('address')
-    //             ->havingRaw('COUNT(*) > 1')
-    //             ->get();
-    
-    // $countErrorAll= Lifterror:: count();
-    
-                
-    // $countErrorLift = $address->map(function ($item, $key) {
-    //     $counts = Lifterror::
-    //         where('address','=', $item->address)
-    //         ->count();
-            
-    //      return  $counts   ;
-    //  });
-     
-     
-     
-
-     
-    
+         
       $currentStop = Lifterror:: 
          where('condition','=','остановлен')
         ->orderBy('date', 'desc')         
@@ -62,10 +56,7 @@ class IndexController extends Controller
         ->orderBy('created_at', 'desc')         
         ->paginate(5);
 
-      $additionalWork = Additionalwork::
-          where('pay','=','не оплачено')
-        ->orderBy('created_at', 'desc')        
-        ->get();
+      
         
     $liftAll=Lifterror::where('condition','=','недоделано')
                          ->orWhere('condition','=','текущая заявка')
@@ -97,8 +88,7 @@ class IndexController extends Controller
             'liftsStop' => $currentStop,
             'liftsTime' => $currentTime,
             'lifts' => $noWork,
-            'tasks' => $task,
-            'additionalWorks' => $additionalWork,
+            'tasks' => $task,            
             'liftAll' => $liftAll,
             'liftReturns30_5' => $liftReturn30_5,
             'liftReturns16_3' => $liftReturn16_3,
@@ -201,59 +191,32 @@ public function addАdditionalWork(Request $request){
     
     }
 
-
-public function lifterrorShow(){
-    
-    
-    $lifterror=Lifterror:: orderBy('date', 'desc')
-      ->paginate(15);
-       
-      
-   
-    return   view('requestBook') -> with ([
-            'lifts' => $lifterror,
-            
-            
-   ]); 
-  } 
-
  public function search(Request $request)
    {
     $date = $request->date;   
     $address= $request->address;
     $typeOfLift = $request->typeOfLift;
-    $front= $request->front; 
-
-    switch ($date) {
-      case 'week':
-       $date2 = Carbon::now()->subDay(7);
-       $date1= Carbon::now();
-      
-       case 'month':
-         $date2 = Carbon::now()->subMonth(1);
-         $date1= Carbon::now();
-        break;   
-      case 'year':
-         $date2 = Carbon::now()->subYear(1);
-         $date1= Carbon::now();
-        break;   
-    }
-      
-
+    $front= $request->front;     
+    $dateRequest= Carbon::now()->subDay($date);
+ 
+    if(empty($date)){
+       $lifterror=Lifterror:: orderBy('date', 'desc')
+      ->paginate(15);
+    }else{   
     $lifterror = Lifterror::
-           when($date,  function ($query) use ( $date1, $date2) {
-                    return $query->whereBetween( 'date',array($date2, $date1)); })  // поиск по дате 
+          where('date','>=', $dateRequest)  
     
           ->when($address, function ($query) use ($address) {
-                    return $query->where('address', '=', $address);}) //по адресу
+                    return $query->where('address', '=', $address);}) 
             
           ->when($front, function ($query) use ($front) {
-                    return $query->where('front', '=', $front);}) // по парадной
+                    return $query->where('front', '=', $front);}) 
 
            -> when($typeOfLift, function ($query) use ($typeOfLift) {
-                      return $query->where('typeOfLift', '=', $typeOfLift);})  //тип лифта
+                      return $query->where('typeOfLift', '=', $typeOfLift);})  
          ->orderBy('date', 'desc')
          ->paginate(40);
+        }
    
     return   view('requestBook') -> with ([
             'lifts' => $lifterror
@@ -357,7 +320,7 @@ public function chengeDetailShow(){
     $detail->fill($data);    
     $detail-> save();
     \Session::flash('status', 'Выполненная работа успешно добавлена');
-    return redirect('changeDetail');
+    return redirect('/');
     }
 
   public function searchChengeDetail(Request $request)
@@ -403,5 +366,39 @@ public function chengeDetailShow(){
    ]); 
  
    } 
+
+   public function infoShow()
+{
+     $countErrorAll= Lifterror:: count();
+
+     $address = Lifterror:: 
+                 select ('address')
+                ->groupBy('address')
+                ->havingRaw('COUNT(*) > 1')
+                ->get();
+    
+         
+    $countErrorLift = $address->map(function ($item, $key) { 
+        
+        $counts = Lifterror:: where('address','=', $item->address)
+                              ->count();
+                              
+        $collection = collect([]); 
+        $merged = $collection->merge([ $item->address => $counts]);
+    
+         return $merged;
+    });
+
+    $additionalWork = Additionalwork::
+          where('pay','=','ожидание')
+        ->orderBy('created_at', 'desc')        
+        ->get();      
+   
+    return   view('info') -> with ([           
+            'countErrorAll' => $countErrorAll,
+            'countErrorLifts' => $countErrorLift,
+            'additionalWorks' => $additionalWork,
+   ]); 
+}
 
  }

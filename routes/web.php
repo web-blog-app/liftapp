@@ -13,45 +13,53 @@
 
 Route::group(['middleware' => 'auth'], function () {
 
+
+Route::get('transmitting', 'IndexController@transmittingShow'
+);
+
+
+			Route::get('manager', 'IndexController@managerShow'
+);
+
+
+
+
+Route::get('supply', 'IndexController@supplyShow'
+);		
+
 Route::get('/', 'IndexController@homeShow'
 );
 
-Route::post('workUpdate', 'IndexController@workUpdate'
+Route::post('/workUpdate', 'IndexController@workUpdate'
 )-> name('workUpdate');
 
-Route::post('taskUpdate', 'IndexController@taskUpdate'
+Route::post('/taskUpdate', 'IndexController@taskUpdate'
 )-> name('taskUpdate');
 
-Route::post('addTask', 'IndexController@addTask'
+Route::post('/addTask', 'IndexController@addTask'
 )-> name('addTask');
 
-Route::post('addАdditionalWork', 'IndexController@addАdditionalWork'
+Route::post('/addАdditionalWork', 'IndexController@addАdditionalWork'
 )-> name('addАdditionalWork');
 
-Route::post('additionalWorkUpdate', 'IndexController@additionalWorkUpdate'
+Route::post('/additionalWorkUpdate', 'IndexController@additionalWorkUpdate'
 )-> name('additionalWorkUpdate');
 
-Route::post('addLift', 'IndexController@addLift'
+Route::post('/addLift', 'IndexController@addLift'
 )-> name('liftStore');
 
 
-Route::get('requestBook', 'IndexController@lifterrorShow'
-);
-
- Route::post('requestBook', 'IndexController@search'
+ Route::get('requestBook', 'IndexController@search'
 )-> name('search');
-
-
 
 Route::get('detail', 'IndexController@detailShow'
 );
+
 Route::post('detailUpdate', 'IndexController@detailUpdate'
 )-> name('detailUpdate');
 
 Route::post('addDetail', 'IndexController@addDetail'
 )-> name('addDetail');
-
-
 
 Route::get('changeDetail', 'IndexController@chengeDetailShow'
 );
@@ -62,7 +70,11 @@ Route::post('addChengeDetail', 'IndexController@addChengeDetail'
 Route::get('searchChengeDetail', 'IndexController@searchChengeDetail'
 )-> name('searchChengeDetail');
 
+Route::get('info', 'IndexController@infoShow'
+);
+
 });
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

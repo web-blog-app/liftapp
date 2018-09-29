@@ -5,22 +5,20 @@
         <div class="container">
             <div class="row">
                 <div class="drop-container">
+
               
    <p>
         <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            Поиск по базе 
+                            Поиск по базе  
         </button>
     </p>
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body">
-                            <form class="drop-form" method="post" action="{{route('search')}}">
+                            <form class="drop-form" method="get" action="{{route('search')}}">
 
                                 <div class="form-group">
-                                    <select class="form-control" size="1" name="date">
-                                        <option value="month">Месяц</option>
-                                        <option value="week">Неделя</option>
-                                        <option value="year">Год</option>
-                                    </select>
+                                   <input type="range" min="1" max="365" name="date" id="date"  onchange="document.getElementById('rangeValue').innerHTML = this.value;"
+>                                  <span id="rangeValue" style="color:red;">183</span>                                   
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control form-control-sm" size="1" name="address" required="">

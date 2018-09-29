@@ -15,8 +15,7 @@
  <div class="content main-content">
         <div class="layer">
             <div class="container">
-                <div class="row">
-                    
+                <div class="row">                 
                   
                     
                     <div class="tabs">
@@ -24,12 +23,13 @@
                             <li class="nav-item">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#important" role="tab" aria-controls="important" aria-selected="true">Задачи</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="more-tab" data-toggle="tab" href="#more" role="tab" aria-controls="more" aria-selected="false">Доп. работы</a>
-                            </li>
-                            <li class="nav-item">
+                             <li class="nav-item">
                                 <a class="nav-link" id="contact-tab" data-toggle="tab" href="#add" role="tab" aria-controls="add" aria-selected="false">Добавить заявку</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="more-tab" data-toggle="tab" href="#more" role="tab" aria-controls="more" aria-selected="false">Добавить ТО</a>
+                            </li>
+                           
                             <li class="nav-item">
                                 <a class="nav-link" id="contact-tab" data-toggle="tab" href="#addTask" role="tab" aria-controls="addTask" aria-selected="false">Добавить задачу</a>
                             </li>
@@ -67,37 +67,68 @@
                        {{$tasks->links()}}
                     </div>
       <div class="tab-pane fade scroll-table" id="more" role="tabpanel" aria-labelledby="more-tab">
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">Дата</th>
-                                        <th scope="col">Работа</th>
-                                        <th scope="col">Исполнитель</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    	@foreach($additionalWorks as $additionalWork)
-                                    <tr>
-                                        <td>{{Carbon\Carbon::parse($additionalWork -> created_at)->format('d-m ') }}</td>
-                                        <td>{{$additionalWork -> additionalWorks}}</td>
-                                        <td>{{$additionalWork -> humans}}</td>
-                                        <td>
-                    <form class="modal-form" method="post"  action="{{route('additionalWorkUpdate')}}">
-                        
-                    <input type="hidden" name='id' value="{{$additionalWork -> id}}"> 
-                    <input type="hidden" name='pay' value="Оплачено"> 
-                    
-                    <button type="submit" class="btn btn-primary">Оплачено</button>
-                    
-                     {{csrf_field()}}
-                </form>
-                                            
-                 </td>
-                                    </tr>                                   
-                                      @endforeach 
-                                    </tbody>
-                                </table>
+                               
+                            <div class="card card-body">
+                            <form class="drop-form" method="POST" action="{{'addChengeDetail'}}" >
+
+                                <div class="form-group">
+                                    <select class="form-control" size="1" name="address" required="">
+                                        <option value="" selected="" disabled="">Адрес дома:</option>
+                                        <option value="Оптиков 45 к1">Оптиков 45 к1</option>
+                                        <option value="Оптиков 45 к2">Оптиков 45 к2</option>
+                                        <option value="Оптиков 49">Оптиков 49</option>
+                                        <option value="Оптиков 50">Оптиков 50</option>
+                                        <option value="Оптиков 52">Оптиков 52</option>
+                                        <option value="Туристская 11">Туристская 11</option>
+                                        <option value="Туристская 15">Туристская 15</option>
+                                        <option value="Туристская 18">Туристская 18</option>
+                                        <option value="Туристская 28">Туристская 28</option>
+                                        <option value="Лыжная 3">Лыжная 3</option>
+                                        <option value="Лыжная 4">Лыжная 4</option>
+                                        <option value="Лыжная 10">Лыжная 10</option>
+                                        <option value="Мебельная 19">Мебельная 19</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" size="1" name="front" required="">
+                                        <option selected="" disabled=""> № парадной:</option>
+                                        <option value="1">1 парадная</option>
+                                        <option value="2">2 парадная</option>
+                                        <option value="3">3 парадная</option>
+                                        <option value="4">4 парадная</option>
+                                        <option value="5">5 парадная</option>
+                                        <option value="6">6 парадная</option>
+                                        <option value="7">7 парадная</option>
+                                        <option value="8">8 парадная</option>
+                                        <option value="9">9 парадная</option>
+                                        <option value="10">10 парадная</option>
+                                        <option value="11">11 парадная</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" size="1" name="typeOfLift" required="">
+                                        <option value="" selected="" disabled="">Вид лифта:</option>
+                                        <option value="пасс.">Пассажирский</option>
+                                        <option value="груз.">Грузовой</option>
+                                        <option value="пож.">Пожарный</option>
+                                        <option value="лев_груз.">Левый грузовой</option>
+                                        <option value="прав_груз">Правый грузовой</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="detail" placeholder="Проделанная работа:" required="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="notice" placeholder="Пометка механика:">
+                                </div>
+                                <div class="form-group">
+                                    <button class=" btn color_but_blue" type="submit">
+                                        Отправить
+                                    </button>
+                                </div>
+                                 {{csrf_field()}}
+                            </form>
+                        </div>
                                   
                             </div>
                             <div class="tab-pane fade" id="add" role="tabpanel" aria-labelledby="contact-tab">
@@ -226,6 +257,7 @@
                         </div>
                     </div>
                 </div>
+
  <div id="accordion">
   <div class="card text-danger ">
     <div class="card-header " id="headingOne">
@@ -238,9 +270,9 @@
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-          <ol>
+          <ol>            
           @foreach($liftReturns30_5 as $lift)
-         <li>{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</li>
+         <li><a href="{{route('search',['date' => 31, 'address' => $lift ->address, 'front' => $lift ->front, 'typeOfLift' => $lift ->typeOfLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</a></li>
          @endforeach
          </ol>
       </div>
@@ -258,7 +290,7 @@
       <div class="card-body">
             <ol>
           @foreach($liftReturns16_3 as $lift)
-         <li>{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</li>
+         <li><a href="{{route('search',['date' => 16, 'address' => $lift ->address, 'front' => $lift ->front, 'typeOfLift' => $lift ->typeOfLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</a></li>
          @endforeach
          </ol>
       </div>
@@ -275,8 +307,8 @@
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
   <ol>
-          @foreach($liftReturns7_2 as $lift)
-         <li>{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</li>
+         @foreach($liftReturns7_2 as $lift)
+         <li><a   href="{{route('search',['date' => 7, 'address' => $lift ->address, 'front' => $lift ->front, 'typeOfLift' => $lift ->typeOfLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</a></li>
          @endforeach
          </ol>
       </div>
