@@ -12,57 +12,36 @@ use App\Additionalwork;
 
 class IndexController extends Controller
 
-{
-   public function transmittingShow(){         
-   
-    return view('transmitting') -> with ([      
-   ]); 
-  }
-
-  public function managerShow(){         
-   
-    return view('manager') -> with ([      
-   ]); 
-  }
-
-    public function supplyShow(){         
-   
-    return view('supply') -> with ([      
-   ]); 
-  }
-
+{  
    public function homeShow(){
     $date30 = Carbon::now()->subDays(30);
     $date16 = Carbon::now()->subDays(16);
-    $date8 = Carbon::now()->subDays(8);
+    $date8  = Carbon::now()->subDays(8);
          
-      $currentStop = Lifterror:: 
+    $currentStop = Lifterror:: 
          where('condition','=','остановлен')
         ->orderBy('date', 'desc')         
         ->get();
         
-     $currentTime = Lifterror:: 
+    $currentTime = Lifterror:: 
          where('condition','=','текущая заявка')
         ->orderBy('date', 'desc')         
         ->get();
         
-     $noWork = Lifterror:: 
+    $noWork = Lifterror:: 
          where('condition','=','недоделано')
         ->orderBy('date', 'desc')         
         ->get();
 
-      $task = Task::
+    $task = Task::
           where('condition','=','не выполнено')
         ->orderBy('created_at', 'desc')         
-        ->paginate(5);
-
-      
+        ->paginate(5);      
         
     $liftAll=Lifterror::where('condition','=','недоделано')
                          ->orWhere('condition','=','текущая заявка')
                          ->orWhere('condition','=','остановлен')
-                          ->get();;
-                          
+                          ->get();                          
         
     $liftReturn30_5 = Lifterror:: where('date','>',$date30)
                     ->where('condition','!=','недоделано')
@@ -92,8 +71,7 @@ class IndexController extends Controller
             'liftAll' => $liftAll,
             'liftReturns30_5' => $liftReturn30_5,
             'liftReturns16_3' => $liftReturn16_3,
-            'liftReturns7_2' => $liftReturn7_2,
-            
+            'liftReturns7_2' => $liftReturn7_2,            
              
     ]);
     }
@@ -154,7 +132,7 @@ class IndexController extends Controller
  
  }
  
-   public function addTask(Request $request){
+public function addTask(Request $request){
        
     $this->validate($request, [
         'task' => 'required'

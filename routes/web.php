@@ -1,4 +1,4 @@
-<?php<?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +24,10 @@ Route::get('transmitting', 'IndexController@transmittingShow'
 
 
 
-Route::get('supply', 'IndexController@supplyShow'
-);		
+	
 
 Route::get('/', 'IndexController@homeShow'
-);
+)-> name('home');
 
 Route::post('/workUpdate', 'IndexController@workUpdate'
 )-> name('workUpdate');

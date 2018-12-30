@@ -16,6 +16,9 @@ class AdditionalWorks extends Migration
        Schema::defaultStringLength(191);
         Schema::create('additionalworks', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('address', 100); 
+            $table->string('front', 50);
+            $table->string('typeOfLift', 50); 
             $table->string('additionalWorks');
             $table->string('pay')->default('не оплачено');            
             $table->rememberToken();

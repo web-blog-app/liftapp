@@ -9,5 +9,5 @@ class Additionalwork extends Model
     protected $fillable= [ 'additionalWorks', 
         					'humans',
    							'pay' 
-   					        ];
+   					     ];
 }

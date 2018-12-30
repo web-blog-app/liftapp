@@ -1,6 +1,6 @@
-@extends('layout.site') 
+ 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content request-content">
   <div class="container">
@@ -11,10 +11,11 @@
         </p>
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
-              <form class="drop-form" method="get" action="{{route('search')}}">
-                {{-- Form include --}}
-                @include('form.request.request')
-                {{csrf_field()}}
+              <form class="drop-form" method="get" action="<?php echo e(route('search')); ?>">
+                
+                <?php echo $__env->make('form.request.request', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php echo e(csrf_field()); ?>
+
               </form>
             </div>
           </div>
@@ -34,23 +35,26 @@
               </tr>
             </thead>
             <tbody>
-            @foreach($lifts as $lift)
+            <?php $__currentLoopData = $lifts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lift): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <tr>
-                <td>{{ Carbon\Carbon::parse($lift ->date )->format('d-m')}}</td>
-                <td>{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</td>    
-                <td>{{$lift ->typeOfError}}</td>
-                <td class="hide-note">{{$lift ->notice}}</td>
-                <td >{{$lift ->work}}</td>
+                <td><?php echo e(Carbon\Carbon::parse($lift ->date )->format('d-m')); ?></td>
+                <td><?php echo e($lift ->address); ?>-<?php echo e($lift ->front); ?>-<?php echo e($lift ->typeOfLift); ?></td>    
+                <td><?php echo e($lift ->typeOfError); ?></td>
+                <td class="hide-note"><?php echo e($lift ->notice); ?></td>
+                <td ><?php echo e($lift ->work); ?></td>
               </tr>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </tbody>
         </table>
-        {{$lifts->links()}}
+        <?php echo e($lifts->links()); ?>
+
       </div>
     </div>
   </div>     
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
   
 
+
+<?php echo $__env->make('layout.site', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

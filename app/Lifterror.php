@@ -19,7 +19,11 @@ class Lifterror extends Model
    											'typeOfError',
    											'condition',   											
     										'work',
-      									'notice'];
+      									'notice',
+      									'human',
+      									'seizing',
+      									'floor'
+      								];
 
 
  

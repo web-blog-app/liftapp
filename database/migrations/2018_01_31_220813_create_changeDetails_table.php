@@ -22,6 +22,7 @@ class CreateChangeDetailsTable extends Migration
             $table->string('typeOfLift', 50);                        
             $table->string('detail', 150);                     
             $table->string('notice', 255)->nullable();
+            $table->string('human', 50);
             $table->timestamps();
             
         });
