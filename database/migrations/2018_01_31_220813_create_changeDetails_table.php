@@ -16,10 +16,10 @@ class CreateChangeDetailsTable extends Migration
        Schema::defaultStringLength(191);
        Schema::create('changedetails', function (Blueprint $table) {
             $table->increments('id');            
-            $table->timestamp('date');
+            $table->timestamp('date')->nullable();
             $table->string('address', 100); 
             $table->string('front', 50);
-            $table->string('typeOfLift', 50);                        
+            $table->string('typeLift', 50);                        
             $table->string('detail', 150);                     
             $table->string('notice', 255)->nullable();
             $table->string('human', 50);

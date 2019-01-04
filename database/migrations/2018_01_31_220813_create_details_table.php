@@ -16,7 +16,7 @@ class CreateDetailsTable extends Migration
        Schema::defaultStringLength(191);
        Schema::create('details', function (Blueprint $table) {
             $table->increments('id');            
-            $table->timestamp('date');
+            $table->timestamp('date')->nullable();
             $table->string('address', 100);            
             $table->string('number', 100);
             $table->string('detailName', 100);

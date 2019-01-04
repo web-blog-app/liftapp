@@ -20,8 +20,8 @@ class CreateLifterrorsTable extends Migration
             $table->string('seizing', 50)->nullable();
             $table->string('address', 100);
             $table->string('front', 50);
-            $table->string('typeOfLift', 50);
-            $table->string('typeOfError')->nullable();
+            $table->string('typeLift', 50);
+            $table->string('typeError')->nullable();
             $table->string('floor', 50)->nullable();
             $table->string('condition', 50);
             $table->text('work')->nullable();

@@ -36,7 +36,7 @@
 </div>
 <div class="form-group col-6 col-md-6 col-sm-6">
     <label for="typeOfLift">Вид лифта:</label>
-    <select class="form-control form-control-sm" size="1" name="typeOfLift" required="">
+    <select class="form-control form-control-sm" size="1" name="typeLift" required="">
         <option value="" selected="" disabled="">Вид лифта:</option>
         <option value="вся парадная">Вся парадная</option>
         <option value="пасс.">Пассажирский</option>

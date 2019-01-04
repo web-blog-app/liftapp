@@ -45,21 +45,21 @@ class IndexController extends Controller
         
     $liftReturn30_5 = Lifterror:: where('date','>',$date30)
                     ->where('condition','!=','недоделано')
-                    ->select('address','front','typeOfLift')
-                    ->groupBy('address','front','typeOfLift')
+                    ->select('address','front','typeLift')
+                    ->groupBy('address','front','typeLift')
                     ->havingRaw('COUNT(*) > 5')
                     ->get(); 
                     
     $liftReturn16_3 = Lifterror:: where('date','>',$date16)
                     ->where('condition','!=','недоделано')
-                    ->select('address','front','typeOfLift')
-                    ->groupBy('address','front','typeOfLift')
+                    ->select('address','front','typeLift')
+                    ->groupBy('address','front','typeLift')
                     ->havingRaw('COUNT(*) > 3')
                     ->get();              
     $liftReturn7_2 = Lifterror:: where('date','>',$date8)
                     ->where('condition','!=','недоделано')
-                    ->select('address','front','typeOfLift')
-                    ->groupBy('address','front','typeOfLift')
+                    ->select('address','front','typeLift')
+                    ->groupBy('address','front','typeLift')
                     ->havingRaw('COUNT(*) > 2')
                     ->get();       
    
@@ -97,7 +97,7 @@ class IndexController extends Controller
                    return $query->update(['condition'=> $condition]);});
                    
   $workSave->when($error,  function ($query) use ($error) {
-                   return $query->update(['typeOfError'=> $error]);});
+                   return $query->update(['typeError'=> $error]);});
                    
     
   \Session::flash('status', 'Работа сделана');
@@ -173,7 +173,7 @@ public function addАdditionalWork(Request $request){
    {
     $date = $request->date;   
     $address= $request->address;
-    $typeOfLift = $request->typeOfLift;
+    $typeLift = $request->typeLift;
     $front= $request->front;     
     $dateRequest= Carbon::now()->subDay($date);
  
@@ -190,8 +190,8 @@ public function addАdditionalWork(Request $request){
           ->when($front, function ($query) use ($front) {
                     return $query->where('front', '=', $front);}) 
 
-           -> when($typeOfLift, function ($query) use ($typeOfLift) {
-                      return $query->where('typeOfLift', '=', $typeOfLift);})  
+           -> when($typeLift, function ($query) use ($typeLift) {
+                      return $query->where('typeLift', '=', $typeLift);})  
          ->orderBy('date', 'desc')
          ->paginate(40);
         }
@@ -209,7 +209,7 @@ public function addАdditionalWork(Request $request){
         'date' => 'required', 
         'address' => 'required', 
         'front' => 'required', 
-        'typeOfLift' => 'required', 
+        'typeLift' => 'required', 
         'condition' => 'required'
     ]);
     
@@ -305,7 +305,7 @@ public function chengeDetailShow(){
    {
     $date = $request->date;   
     $address= $request->address;
-    $typeOfLift = $request->typeOfLift;
+    $typeLift = $request->typeLift;
     $front= $request->front; 
 
     switch ($date) {
@@ -334,8 +334,8 @@ public function chengeDetailShow(){
           ->when($front, function ($query) use ($front) {
                     return $query->where('front', '=', $front);})
 
-           -> when($typeOfLift, function ($query) use ($typeOfLift) {
-                      return $query->where('typeOfLift', '=', $typeOfLift);}) 
+           -> when($typeLift, function ($query) use ($typeLift) {
+                      return $query->where('typeLift', '=', $typeLift);}) 
          ->orderBy('date', 'desc')
          ->paginate(10);
    

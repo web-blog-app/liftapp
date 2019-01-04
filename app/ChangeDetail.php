@@ -9,11 +9,12 @@ class Changedetail extends Model
 {
 
 protected $fillable= ['address',
-  										'front',
-   										'typeOfLift',    											
-    									'detail',
-      								'notice'
-      							];
+											'front',
+											'typeLift',    											
+											'detail',
+											'notice',
+											'human',
+																	];
 
  
 }

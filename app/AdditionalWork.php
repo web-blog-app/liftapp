@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Additionalwork extends Model
 {
-    protected $fillable= [ 'additionalWorks', 
-        					'humans',
-   							'pay' 
-   					     ];
+	protected $fillable= ['address',
+												'front',
+												'typeLift',
+    										'additionalWorks',
+        								'humans',
+   											'pay' 
+   					     													];
 }

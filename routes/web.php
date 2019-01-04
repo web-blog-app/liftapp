@@ -14,16 +14,6 @@
 Route::group(['middleware' => 'auth'], function () {
 
 
-Route::get('transmitting', 'IndexController@transmittingShow'
-);
-
-
-			Route::get('manager', 'IndexController@managerShow'
-);
-
-
-
-
 	
 
 Route::get('/', 'IndexController@homeShow'
@@ -52,7 +42,7 @@ Route::post('/addLift', 'IndexController@addLift'
 )-> name('search');
 
 Route::get('detail', 'IndexController@detailShow'
-);
+)->name('detail');
 
 Route::post('detailUpdate', 'IndexController@detailUpdate'
 )-> name('detailUpdate');
@@ -61,7 +51,7 @@ Route::post('addDetail', 'IndexController@addDetail'
 )-> name('addDetail');
 
 Route::get('changeDetail', 'IndexController@chengeDetailShow'
-);
+)->name('changeDetail');
 
 Route::post('addChengeDetail', 'IndexController@addChengeDetail'
 )-> name('addChengeDetail');
@@ -70,7 +60,7 @@ Route::get('searchChengeDetail', 'IndexController@searchChengeDetail'
 )-> name('searchChengeDetail');
 
 Route::get('info', 'IndexController@infoShow'
-);
+)-> name('info');
 
 });
 

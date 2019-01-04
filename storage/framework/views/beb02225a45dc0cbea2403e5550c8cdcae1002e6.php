@@ -12,6 +12,7 @@
      <label for="detail">Проделанная работа:</label>
     <input class="form-control" type="text" name="detail" placeholder="Проделанная работа:" required="">
   </div> 
+  <input type="hidden" name="human" value="<?php echo e(Auth::user()->name); ?>"> 
   <div class="form-group">
     <button type="submit" class="btn btn-primary">Отправить</button>
   </div>                                     

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
 	protected $fillable= ['task',  											
-   											'condition',
+												'condition',
    											'address',
    											'typeLift',
    											'fotoTask',
