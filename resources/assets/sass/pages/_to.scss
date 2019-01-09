@@ -1,0 +1,10 @@
+.to-content {
+  background: linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)100%), url("../img/to.jpg") no-repeat;
+  background-size: cover;
+
+  .drop-container {
+    button {
+      min-width: 130px;
+    }
+  }
+}

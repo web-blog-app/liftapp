@@ -1,0 +1,239 @@
+.header {
+  @media (max-width: 768px) {
+    .navbar-brand {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .user-container {
+      padding-right: 50px;
+    }
+  }
+  a {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: .3s;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .user-container {
+    a {
+      color: $c-out-text;
+    }
+
+    .dropdown-menu {
+      .dropdown-toggle {
+        display: none;
+      }
+    }
+
+    .dropdown-toggle {
+      color: $c-login-text;
+    }
+  }
+
+  .user {
+    max-width: 64px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      max-width: 32px;
+    }
+  }
+}
+
+.main-content {
+  background-blend-mode: multiply;
+  background: linear-gradient( rgba(6, 6, 12, 0.5) 100%, rgba(6, 6, 12, 0.5)100%), url("../../img/main-bg.jpg") no-repeat;
+  background-size: cover;
+
+}
+
+button {
+  cursor: pointer;
+}
+
+.tabs {
+  width: 100%;
+
+  .tab-content {
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+
+  .nav-tabs {
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+
+      .nav-item {
+        padding-left: 0;
+
+        a {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+
+  .nav-link {
+    color: $c-tabs-text;
+  }
+}
+
+.table {
+  background: $c-table-bg;
+  color: $c-tabs-text;
+
+  tr:nth-child(even) {
+    background-color: lighten(rgba(0, 0, 0, 0.45),55%);
+  }
+
+  td {
+    @media (max-width: 768px) {
+      padding: 5px;
+      vertical-align: inherit;
+      min-width: 70px;
+    }
+  }
+
+  .arrow {
+    width: 15px;
+    cursor: pointer;
+
+    &.rotate{
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.form {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(6, 6, 12, 0.5);
+
+  label {
+    color: $c-tabs-text;
+  }
+}
+
+.notes {
+  text-align: center;
+
+  li {
+    position: relative;
+    max-width: 274px;
+    margin: 25px auto;
+    padding: 40px 15px 15px 15px;
+    background: #fff;
+    box-shadow: 0 1px 2px #000;
+
+  }
+}
+
+.notes {
+  li {
+    &:nth-child(even) {
+      transform: rotate(2deg);
+    }
+  }
+}
+
+
+.notes {
+  p {
+    text-align: center;
+    font: normal normal normal 16px/18px 'Reenie Beanie', Helvetica, Arial, sans-serif;
+    color: #000;
+    text-shadow: white 1px 1px 0;
+    overflow:hidden;
+
+    span {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+}
+
+.notes {
+  li {
+    &::before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      left: 115px;
+      top: -15px;
+      width: 75px;
+      height: 25px;
+      z-index: 2;
+      background-color: rgba(243,245,228,0.5);
+      border: 2px solid rgba(255,255,255,0.5);
+      box-shadow: 2px 2px 2px #000;
+      transform: rotate(-6deg);
+    }
+  }
+}
+
+.notes {
+  li {
+    &:nth-child(even)::before {
+      transform: rotate(6deg);
+    }
+  }
+}
+
+.modal-open {
+  .toggle-menu {
+    z-index: -1;
+  }
+}
+
+.modals {
+  text-align: left;
+
+  .sub-title {
+    font-size: 18px;
+
+    span {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
+
+#accordion {
+  background: rgba(245,255,255,0.9);
+}
+
+.card {
+  background: none;
+}
+
+.card-header {
+  background: none;
+  font-size: 18px;
+}
+
+.card-body {
+  li {
+    padding: 5px 0;
+    font-size: 16px;
+  }
+}
+
+.hide-note {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.calendar {
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 5px;
+  padding: 5px;
+}
