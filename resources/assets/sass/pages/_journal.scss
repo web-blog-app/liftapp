@@ -1,0 +1,45 @@
+.request-content {
+  background: linear-gradient( rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2)100%), url("../img/journal.jpg") no-repeat;
+  background-size: cover;
+}
+
+.drop-container {
+  padding: 15px 10px;
+  width: 100%;
+
+  .drop-form{
+    padding: 10px;
+  }
+
+  .card {
+    background: rgba(0,0,0,0.5);
+  }
+}
+
+.database-accordion {
+  width: 100%;
+
+  .card,
+  .card-header {
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+  }
+
+  .card-body {
+    padding: 15px;
+  }
+
+  .btn-link {
+    cursor: pointer;
+    color: #8fcafe;
+    text-decoration: none;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
