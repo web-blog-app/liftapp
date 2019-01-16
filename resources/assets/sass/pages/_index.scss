@@ -237,3 +237,64 @@ button {
   border-radius: 5px;
   padding: 5px;
 }
+
+// cards
+.owl-item {
+  padding: 20px;
+}
+
+.card {
+  &.task-card {
+    max-width: 320px;
+    background-color: rgba(0,0,0, .7);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: -1px 3px 20px 0px rgba(168,167,181,1);
+    text-align: center;
+
+    .image {
+      max-height: 200px;
+    }
+
+    .description {
+      padding: 10px;
+      color: #fff;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .btn {
+      margin: 10px auto;
+    }
+  }
+}
+
+.main-content {
+  .owl-carousel {
+    .owl-nav {
+      button {
+        &.owl-prev,
+        &.owl-next {
+          color: #fff;
+          font-size: 40px;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+.owl-prev,
+.owl-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.owl-prev {
+  left: 0;
+}
+
+.owl-next {
+  right: 0;
+}

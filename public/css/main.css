@@ -564,6 +564,58 @@ button {
   padding: 5px;
 }
 
+.owl-item {
+  padding: 20px;
+}
+
+.card.task-card {
+  max-width: 320px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-box-shadow: -1px 3px 20px 0px #a8a7b5;
+          box-shadow: -1px 3px 20px 0px #a8a7b5;
+  text-align: center;
+}
+
+.card.task-card .image {
+  max-height: 200px;
+}
+
+.card.task-card .description {
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  text-align: left;
+}
+
+.card.task-card .btn {
+  margin: 10px auto;
+}
+
+.main-content .owl-carousel .owl-nav button.owl-prev,
+.main-content .owl-carousel .owl-nav button.owl-next {
+  color: #fff;
+  font-size: 40px;
+  outline: none;
+}
+
+.owl-prev,
+.owl-next {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.owl-prev {
+  left: 0;
+}
+
+.owl-next {
+  right: 0;
+}
+
 .request-content {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(100%, rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), url(/images/journal.jpg?8cdd6c4b874b815d4fb5aff7b26e4402) no-repeat;
   background: linear-gradient(rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2) 100%), url(/images/journal.jpg?8cdd6c4b874b815d4fb5aff7b26e4402) no-repeat;

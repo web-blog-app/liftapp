@@ -15,44 +15,229 @@
   <div class="layer">
     <div class="container">
       <div class="row"> 
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active ">
-              <div class="card bg-dark text-white" >
-                <img class="card-img col-12" src="img/mex_lift.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                  <h2 class="card-title">Текущие задачи!</h2>
-                  <h5 class="card-text">Задачи которые необходимо выполнить в ближайшее время или все пойдет прахом.</h5>
-                  <h5 class="card-text">Увидел неиправность которую нужно исправить, но не срочно.  Сфотографируй и отправь в задачи.</h5>
+        {{--<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">--}}
+          {{--<div class="carousel-inner">--}}
+            {{--<div class="carousel-item active ">--}}
+              {{--<div class="card bg-dark text-white" >--}}
+                {{--<img class="card-img col-12" src="img/mex_lift.jpg" alt="Card image">--}}
+                {{--<div class="card-img-overlay">--}}
+                  {{--<h2 class="card-title">Текущие задачи!</h2>--}}
+                  {{--<h5 class="card-text">Задачи которые необходимо выполнить в ближайшее время или все пойдет прахом.</h5>--}}
+                  {{--<h5 class="card-text">Увидел неиправность которую нужно исправить, но не срочно.  Сфотографируй и отправь в задачи.</h5>--}}
+                {{--</div>--}}
+              {{--</div>--}}
+            {{--</div>  --}}
+            {{--@foreach($tasks as $task)--}}
+            {{--<div class="carousel-item ">--}}
+              {{--<div class="card text-white ">--}}
+                  {{--<img class="card-img" src="img/mex_lift.jpg" alt="Card image cap">--}}
+                  {{--<div class="card-img-overlay">--}}
+                    {{--<h2 class="card-title">Дата задачи: {{Carbon\Carbon::parse($task->created_at)->format('d-m-y')}}</h2>--}}
+                    {{--<h5 class="card-text">Что сделать: {{$task -> task}}</h5>--}}
+                    {{--<form class="modal-form" method="post"  action="{{route('taskUpdate')}}">--}}
+                      {{--<input type="hidden" name='id' value="{{$task -> id}}"> --}}
+                      {{--<input type="hidden" name='condition' value="Выполнено"> --}}
+                      {{--<button type="submit" class="btn btn-primary">Выполнено</button>--}}
+                      {{--{{csrf_field()}}--}}
+                    {{--</form>--}}
+                  {{--</div>--}}
+                {{--</div>                    --}}
+              {{--</div>--}}
+              {{--@endforeach   --}}
+            {{--</div>--}}
+          {{--<a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">--}}
+            {{--<span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
+            {{--<span class="sr-only">Previous</span>--}}
+          {{--</a>--}}
+          {{--<a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">--}}
+            {{--<span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
+            {{--<span class="sr-only">Next</span>--}}
+          {{--</a>--}}
+        {{--</div>--}}
+
+        <div class="owl-carousel">
+          <div>
+            <div class="card task-card">
+              <img src="img/mex_lift.jpg" alt="" class="image">
+              <div class="description">
+                <div class="date">
+                  Дата: 22-02-2019
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="lift-type">
+                  Лифт: пассажирский
+                </div>
+                <div class="task">
+                  Задача: нужно починить
+                </div>
+                <div class="assignee">
+                  Добавил: Пупкин Вася
                 </div>
               </div>
-            </div>  
-            @foreach($tasks as $task)
-            <div class="carousel-item ">
-              <div class="card text-white ">
-                  <img class="card-img" src="img/mex_lift.jpg" alt="Card image cap">
-                  <div class="card-img-overlay">
-                    <h2 class="card-title">Дата задачи: {{Carbon\Carbon::parse($task->created_at)->format('d-m-y')}}</h2>
-                    <h5 class="card-text">Что сделать: {{$task -> task}}</h5>
-                    <form class="modal-form" method="post"  action="{{route('taskUpdate')}}">
-                      <input type="hidden" name='id' value="{{$task -> id}}"> 
-                      <input type="hidden" name='condition' value="Выполнено"> 
-                      <button type="submit" class="btn btn-primary">Выполнено</button>
-                      {{csrf_field()}}
-                    </form>
-                  </div>
-                </div>                    
-              </div>
-              @endforeach   
+                <button type="submit" class="btn btn-primary">Выполнено</button>
             </div>
-          <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+          </div>
+          <div>
+            <div class="card task-card">
+              <img src="img/mex_lift.jpg" alt="" class="image">
+              <div class="description">
+                <div class="date">
+                  Дата: 22-02-2019
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="lift-type">
+                  Лифт: пассажирский
+                </div>
+                <div class="task">
+                  Задача: нужно починить
+                </div>
+                <div class="assignee">
+                  Добавил: Пупкин Вася
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Выполнено</button>
+            </div>
+          </div> <div>
+            <div class="card task-card">
+              <img src="img/mex_lift.jpg" alt="" class="image">
+              <div class="description">
+                <div class="date">
+                  Дата: 22-02-2019
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="lift-type">
+                  Лифт: пассажирский
+                </div>
+                <div class="task">
+                  Задача: нужно починить
+                </div>
+                <div class="assignee">
+                  Добавил: Пупкин Вася
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Выполнено</button>
+            </div>
+          </div> <div>
+            <div class="card task-card">
+              <img src="img/mex_lift.jpg" alt="" class="image">
+              <div class="description">
+                <div class="date">
+                  Дата: 22-02-2019
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="lift-type">
+                  Лифт: пассажирский
+                </div>
+                <div class="task">
+                  Задача: нужно починить
+                </div>
+                <div class="assignee">
+                  Добавил: Пупкин Вася
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Выполнено</button>
+            </div>
+          </div> <div>
+            <div class="card task-card">
+              <img src="img/mex_lift.jpg" alt="" class="image">
+              <div class="description">
+                <div class="date">
+                  Дата: 22-02-2019
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="lift-type">
+                  Лифт: пассажирский
+                </div>
+                <div class="task">
+                  Задача: нужно починить
+                </div>
+                <div class="assignee">
+                  Добавил: Пупкин Вася
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Выполнено</button>
+            </div>
+          </div> <div>
+            <div class="card task-card">
+              <img src="img/mex_lift.jpg" alt="" class="image">
+              <div class="description">
+                <div class="date">
+                  Дата: 22-02-2019
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="lift-type">
+                  Лифт: пассажирский
+                </div>
+                <div class="task">
+                  Задача: нужно починить
+                </div>
+                <div class="assignee">
+                  Добавил: Пупкин Вася
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Выполнено</button>
+            </div>
+          </div> <div>
+            <div class="card task-card">
+              <img src="img/mex_lift.jpg" alt="" class="image">
+              <div class="description">
+                <div class="date">
+                  Дата: 22-02-2019
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="address">
+                  Адрес: Оптиков 15
+                </div>
+                <div class="lift-type">
+                  Лифт: пассажирский
+                </div>
+                <div class="task">
+                  Задача: нужно починить
+                </div>
+                <div class="assignee">
+                  Добавил: Пупкин Вася
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Выполнено</button>
+            </div>
+          </div>
+
+
+
+
+
         </div>
       
         <div class="tabs">

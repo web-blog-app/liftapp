@@ -1,4 +1,5 @@
-var $ = require("jquery");
+// var $ = require("jquery");
+import 'owl.carousel';
 
 $( document ).ready(function() {
 //    login page
@@ -39,5 +40,18 @@ $( document ).ready(function() {
     $(this).toggleClass('add_elevator_show').siblings('.form_hidden').slideToggle(0);
   });
 
-  console.log('success');
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin: 20,
+    touchDrag:true,
+    nav:true,
+    responsive:{
+      0:{
+        items:1
+      },
+      900:{
+        items:3
+      }
+    }
+  })
 });

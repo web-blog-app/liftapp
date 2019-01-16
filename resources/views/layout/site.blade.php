@@ -28,8 +28,9 @@
  
     @yield('content')
 
-    @include('kit.footer')      
- 
+    @include('kit.footer')
+
+<script src="{{asset('js/jquery.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
 </body>
 </html>

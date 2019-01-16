@@ -15,8 +15,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .js('resources/assets/js/main.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
   .sass('resources/assets/sass/main.scss', 'public/css')
-   .options({
-     postCss: [
-       require('postcss-css-variables')()
-     ]
-   });
+.copy('node_modules/jquery/dist/jquery.js', 'public/js');
