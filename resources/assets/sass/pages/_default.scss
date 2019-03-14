@@ -235,3 +235,24 @@ button {
     font-size: 12px;
   }
 }
+
+.action-buttons {
+  text-align: center;
+  width: 100%;
+
+  button {
+    margin: 10px;
+    max-width: 180px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+}
+
+.modal-form-submit {
+  .disabled {
+    pointer-events: none;
+  }
+}

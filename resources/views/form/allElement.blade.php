@@ -1,4 +1,4 @@
-<div class="form-group col-6 col-md-6 col-sm-6">
+<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="address">Адрес дома:</label>
     <select class="form-control form-control-sm" size="1" name="address"  required="">
         <option value="" selected="" disabled="">Адрес дома:</option>
@@ -17,7 +17,7 @@
         <option value="Мебельная 19">Мебельная 19</option>
    </select>
 </div>
-<div class="form-group col-6 col-md-6 col-sm-6">
+<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="front">№ парадной:</label>
     <select class="form-control form-control-sm" size="1" name="front" required="">
         <option value="" selected="" disabled=""> № парадной:</option>
@@ -34,7 +34,7 @@
         <option value="11">11 парадная</option>
     </select>
 </div>
-<div class="form-group col-6 col-md-6 col-sm-6">
+<div class="fform-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="typeOfLift">Вид лифта:</label>
     <select class="form-control form-control-sm" size="1" name="typeLift" required="">
         <option value="" selected="" disabled="">Вид лифта:</option>

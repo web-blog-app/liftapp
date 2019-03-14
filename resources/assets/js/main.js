@@ -1,8 +1,8 @@
-// var $ = require("jquery");
 import 'owl.carousel';
 
 $( document ).ready(function() {
 //    login page
+  window.toastr = require('toastr');
 
   $('.login').on('click', function () {
     $('.registr-box').hide();
@@ -53,5 +53,42 @@ $( document ).ready(function() {
         items:3
       }
     }
-  })
+  });
+
+  $('.modal-form-submit').on('click', function() {
+    var formId = $(this).closest("form").attr('id');
+    var modalFormId = $(this).closest(".form-modal").attr('id');
+    $(this).removeClass("btn-primary");
+    $(this).addClass("disabled btn-default");
+    sendRequest(formId, modalFormId);
+  });
+
+  function sendRequest(formId, modalFormId) {
+    var $form = $('#' + formId);
+    var button = $('#' + modalFormId).find('.disabled');
+
+    $($form).submit(function(e) {
+      e.preventDefault();
+    });
+
+    $.ajax({
+      type: $form.attr('method'),
+      url: $form.attr('action'),
+      data: $form.serialize(),
+      contentType: "application/x-www-form-urlencoded",
+      success: function() {
+        $('#' + modalFormId).modal('hide');
+        $('#' + formId)[0].reset();
+        button.removeClass("disabled btn-default");
+        button.addClass("btn-primary");
+        toastr.success('Форма успешно отправлена')
+      },
+      error: function(errorThrown) {
+        button.removeClass("disabled btn-default");
+        button.addClass("btn-primary");
+        console.log(errorThrown);
+        toastr.error('Возникла ошибка, попробуйте позже');
+      }
+    })
+  }
 });

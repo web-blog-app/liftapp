@@ -5,7 +5,7 @@
         <div class="row">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="img/as.svg" alt="A&S">
+                    <img src="img/as.png" alt="A&S">
                     Студия A&S 2018
                 </div>
                 <div class="footer-info">

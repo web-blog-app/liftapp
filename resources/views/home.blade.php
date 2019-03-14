@@ -15,46 +15,6 @@
   <div class="layer">
     <div class="container">
       <div class="row"> 
-        {{--<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">--}}
-          {{--<div class="carousel-inner">--}}
-            {{--<div class="carousel-item active ">--}}
-              {{--<div class="card bg-dark text-white" >--}}
-                {{--<img class="card-img col-12" src="img/mex_lift.jpg" alt="Card image">--}}
-                {{--<div class="card-img-overlay">--}}
-                  {{--<h2 class="card-title">Текущие задачи!</h2>--}}
-                  {{--<h5 class="card-text">Задачи которые необходимо выполнить в ближайшее время или все пойдет прахом.</h5>--}}
-                  {{--<h5 class="card-text">Увидел неиправность которую нужно исправить, но не срочно.  Сфотографируй и отправь в задачи.</h5>--}}
-                {{--</div>--}}
-              {{--</div>--}}
-            {{--</div>  --}}
-            {{--@foreach($tasks as $task)--}}
-            {{--<div class="carousel-item ">--}}
-              {{--<div class="card text-white ">--}}
-                  {{--<img class="card-img" src="img/mex_lift.jpg" alt="Card image cap">--}}
-                  {{--<div class="card-img-overlay">--}}
-                    {{--<h2 class="card-title">Дата задачи: {{Carbon\Carbon::parse($task->created_at)->format('d-m-y')}}</h2>--}}
-                    {{--<h5 class="card-text">Что сделать: {{$task -> task}}</h5>--}}
-                    {{--<form class="modal-form" method="post"  action="{{route('taskUpdate')}}">--}}
-                      {{--<input type="hidden" name='id' value="{{$task -> id}}"> --}}
-                      {{--<input type="hidden" name='condition' value="Выполнено"> --}}
-                      {{--<button type="submit" class="btn btn-primary">Выполнено</button>--}}
-                      {{--{{csrf_field()}}--}}
-                    {{--</form>--}}
-                  {{--</div>--}}
-                {{--</div>                    --}}
-              {{--</div>--}}
-              {{--@endforeach   --}}
-            {{--</div>--}}
-          {{--<a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">--}}
-            {{--<span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
-            {{--<span class="sr-only">Previous</span>--}}
-          {{--</a>--}}
-          {{--<a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">--}}
-            {{--<span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
-            {{--<span class="sr-only">Next</span>--}}
-          {{--</a>--}}
-        {{--</div>--}}
-
         <div class="owl-carousel">
           <div>
             <div class="card task-card">
@@ -233,66 +193,104 @@
               <button type="submit" class="btn btn-primary">Выполнено</button>
             </div>
           </div>
-
-
-
-
-
         </div>
-      
-        <div class="tabs">
-          <ul class="nav nav-tabs" id="myTab" role="tablist">                            
-            <li class="nav-item">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#add" role="tab" aria-controls="add" aria-selected="false">Добавить заявку</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="more-tab" data-toggle="tab" href="#more" role="tab" aria-controls="more" aria-selected="false">Добавить ТО</a>
-            </li>                           
-            <li class="nav-item">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#addTask" role="tab" aria-controls="addTask" aria-selected="false">Добавить задачу</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#addWork" role="tab" aria-controls="addWork" aria-selected="false">Добавить доп. работы</a>
-            </li>
-          </ul>                                 
-          <div class="tab-content" id="myTabContent"> 
-            <div class="tab-pane fade scroll-table" id="more" role="tabpanel" aria-labelledby="more-tab">
-                <div class="card card-body">
-                  <form class=" form drop-form" method="POST" action="{{'addChengeDetail'}}" >
-                    {{-- Form include --}}
-                    @include('form.home.addChengeDetail')
-                    {{csrf_field()}}
-                  </form>
-                </div>                                  
+
+        <div class="action-buttons">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#more">
+            Добавить заявку
+          </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
+            Добавить ТО
+          </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTask">
+            Добавить задачу
+          </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addWork">
+            Добавить доп. работы
+          </button>
+        </div>
+
+        <div class="modal" id="add">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Новое ТО</h4>
+              </div>
+              <div class="modal-body">
+                <form id="add_form" class=" form drop-form" method="POST" action="{{'addChengeDetail'}}" >
+                  {{-- Form include --}}
+                  @include('form.home.addChengeDetail')
+                  {{csrf_field()}}
+                </form>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+              </div>
             </div>
-            <div class="tab-pane fade" id="add" role="tabpanel" aria-labelledby="contact-tab">
-             @if ($errors->any())
-                <ul class="alert alert-danger">
-                  @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                  @endforeach
-                </ul>
-              @endif
-              <form class="form" method="POST" action="{{route('liftStore')}}">
-                {{-- Form include --}}
-                @include('form.home.addLift')                                    
-                {{csrf_field()}}
-              </form>
+          </div>
+        </div>
+
+        <div class="modal form-modal" id="more">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Новая Заявка</h4>
+              </div>
+              <div class="modal-body">
+                <form class="form" id="more_form" method="POST" action="{{route('liftStore')}}">
+                  {{-- Form include --}}
+                  @include('form.home.addLift')
+                  {{csrf_field()}}
+                </form>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+              </div>
             </div>
-            <div class="tab-pane fade   scroll-table" id="addTask" role="tabpanel" aria-labelledby="important-tab">
-              <form class="form" method="POST" enctype="multipart/form-data" action="{{route('addTask')}}">
-                {{-- Form include --}}
-                @include('form.home.addTask')                                    
-                {{csrf_field()}}
-              </form>
+          </div>
+        </div>
+
+        <div class="modal form-modal" id="addTask">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Добавить Доп. работу</h4>
+              </div>
+              <div class="modal-body">
+                <form id="add-task_form" class="form" method="POST" enctype="multipart/form-data" action="{{route('addTask')}}">
+                  {{-- Form include --}}
+                  @include('form.home.addTask')
+                  {{csrf_field()}}
+                </form>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+              </div>
             </div>
-            <div class="tab-pane fade scroll-table" id="addWork" role="tabpanel" aria-labelledby="more-tab">
-              <form class="form" method="POST" action="{{route('addАdditionalWork')}}">
-                {{-- Form include --}}
-                @include('form.home.addAdditionalWork')
-                {{csrf_field()}}
-              </form>   
-             </div>        
+          </div>
+        </div>
+
+        <div class="modal form-modal" id="addWork">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Добавить Задачу</h4>
+              </div>
+              <div class="modal-body">
+                <form id="add-work_form" class="form" method="POST" action="{{route('addАdditionalWork')}}">
+                  {{-- Form include --}}
+                  @include('form.home.addAdditionalWork')
+                  {{csrf_field()}}
+                </form>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
