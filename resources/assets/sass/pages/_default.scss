@@ -247,11 +247,14 @@ button {
 
     @media (max-width: 768px) {
       display: block;
+      font-size: 18px;
+      margin: 10px auto;
+      max-width: 220px;
     }
   }
 }
 
-.modal-form-submit {
+.modal-dialog {
   .disabled {
     pointer-events: none;
   }

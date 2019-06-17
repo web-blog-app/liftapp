@@ -39,157 +39,6 @@
                   Добавил: Пупкин Вася
                 </div>
               </div>
-                <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div>
-          <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div> <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div> <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div> <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div> <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div> <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
               <button type="submit" class="btn btn-primary">Выполнено</button>
             </div>
           </div>
@@ -210,14 +59,14 @@
           </button>
         </div>
 
-        <div class="modal" id="add">
+        <div class="modal form-modal" id="add">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">Новое ТО</h4>
               </div>
               <div class="modal-body">
-                <form id="add_form" class=" form drop-form" method="POST" action="{{'addChengeDetail'}}" >
+                <form class="form drop-form" id="add_form" method="POST" action="{{'addChengeDetail'}}">
                   {{-- Form include --}}
                   @include('form.home.addChengeDetail')
                   {{csrf_field()}}

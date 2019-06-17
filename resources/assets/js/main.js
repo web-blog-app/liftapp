@@ -56,6 +56,7 @@ $( document ).ready(function() {
   });
 
   $('.modal-form-submit').on('click', function() {
+    console.log($(this).closest("form").attr('id'))
     var formId = $(this).closest("form").attr('id');
     var modalFormId = $(this).closest(".form-modal").attr('id');
     $(this).removeClass("btn-primary");
@@ -77,7 +78,6 @@ $( document ).ready(function() {
       data: $form.serialize(),
       contentType: "application/x-www-form-urlencoded",
       success: function() {
-        $('#' + modalFormId).modal('hide');
         $('#' + formId)[0].reset();
         button.removeClass("disabled btn-default");
         button.addClass("btn-primary");

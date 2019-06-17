@@ -11,6 +11,6 @@
   		<label for="additionalWorks">Проделанная работа:</label>
     	<textarea class="form-control" id="additionalWorks" rows="2" name="additionalWorks" required=""></textarea>
   </div>
-  
+	<input type="hidden" name="human" value="{{ Auth::user()->name }}">
  	<button type="submit" class="btn btn-primary modal-form-submit">Отправить</button>
 </div>

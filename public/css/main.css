@@ -296,10 +296,13 @@ button {
 @media (max-width: 768px) {
   .action-buttons button {
     display: block;
+    font-size: 18px;
+    margin: 10px auto;
+    max-width: 220px;
   }
 }
 
-.modal-form-submit .disabled {
+.modal-dialog .disabled {
   pointer-events: none;
 }
 
