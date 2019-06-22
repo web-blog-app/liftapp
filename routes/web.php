@@ -13,58 +13,62 @@
 
 Route::group(['middleware' => 'auth'], function () {
 
+	Route::get('/', 'HomeController@show'
+	)-> name('home');
 
-	
+	Route::get('/user', 'UserController@show'
+	)-> name('user');
 
-Route::get('/', 'IndexController@homeShow'
-)-> name('home');
+	Route::post('/lifterrorStore', 'LifterrorController@store'
+	)-> name('lifterrorStore');
 
-Route::post('/workUpdate', 'IndexController@workUpdate'
-)-> name('workUpdate');
+	Route::post('/lifterrorUpdate', 'LifterrorController@update'
+	)-> name('lifterrorUpdate');
 
-Route::post('/taskUpdate', 'IndexController@taskUpdate'
-)-> name('taskUpdate');
+	Route::post('/taskUpdate','TaskController@update'
+	)-> name('taskUpdate');
 
-Route::post('/addTask', 'IndexController@addTask'
-)-> name('addTask');
+	Route::post('/taskStore','TaskController@store'
+	)-> name('taskStore');
 
-Route::post('/addАdditionalWork', 'IndexController@addАdditionalWork'
-)-> name('addАdditionalWork');
+	Route::post('/additionalworkStore', 'AdditionalworkController@store'
+	)-> name('additionalworkStore');
 
-Route::post('/additionalWorkUpdate', 'IndexController@additionalWorkUpdate'
-)-> name('additionalWorkUpdate');
+	Route::post('/additionalworkUpdate', 'AdditionalworkController@update'
+	)-> name('additionalworkUpdate');
 
-Route::post('/addLift', 'IndexController@addLift'
-)-> name('liftStore');
+ 	Route::get('/requestBook', 'RequestbookController@show'
+	)-> name('requestBook');
 
+ 	Route::get('/requestBook/search', 'LifterrorController@search'
+	)-> name('searchLift');
 
- Route::get('requestBook', 'IndexController@search'
-)-> name('search');
+ 	Route::get('detail', 'DetailPageController@detailShow'
+	)->name('detail');
 
-Route::get('detail', 'IndexController@detailShow'
-)->name('detail');
+	Route::post('detailUpdate', 'DetailController@update'
+	)-> name('detailUpdate');
 
-Route::post('detailUpdate', 'IndexController@detailUpdate'
-)-> name('detailUpdate');
+	Route::post('addDetail', 'DetailController@store'
+	)-> name('addDetail');
 
-Route::post('addDetail', 'IndexController@addDetail'
-)-> name('addDetail');
+	Route::get('changeDetail', 'ChengeDetailPageController@show'
+	)->name('changeDetail');
 
-Route::get('changeDetail', 'IndexController@chengeDetailShow'
-)->name('changeDetail');
+	Route::post('addChengeDetail', 'ChengeDetailController@store'
+	)-> name('addChengeDetail');
 
-Route::post('addChengeDetail', 'IndexController@addChengeDetail'
-)-> name('addChengeDetail');
+	Route::get('ChengeDetail/search', 'ChengeDetailController@search'
+	)-> name('searchChengeDetail');
 
-Route::get('searchChengeDetail', 'IndexController@searchChengeDetail'
-)-> name('searchChengeDetail');
+	Route::get('info', 'InfoController@show'
+	);
 
-Route::get('info', 'IndexController@infoShow'
-)-> name('info');
-
+	Route::post('info', 'InfoController@show'
+	)-> name('info');
+	Route::delete('/requestBook/delete/{id}', 'LifterrorController@delete'
+	)-> name('deleteLift');
 });
-
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

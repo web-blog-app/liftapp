@@ -1,85 +1,83 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use App\Lifterror;
+use App\Task;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateLifterrorRequest;
+
+
 
 class LifterrorController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+{ 
+     
+    public function store(CreateLifterrorRequest $request)
     {
-        //
+        Lifterror::create($request->all()); 
+
+        \Session::flash('status', 'Заявка успешно добавлена');
+
+        return redirect('/');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Lifterror  $lifterror
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Lifterror $lifterror)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Lifterror  $lifterror
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Lifterror $lifterror)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Lifterror  $lifterror
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Lifterror $lifterror)
     {
-        //
+        $notice = $request->notice;
+        $condition = $request->condition;
+        $work = $request->work;       
+        $error = $request->error;
+  
+        $workSave = Lifterror:: where('id','=',$request->id);  
+    
+        $workSave ->when($work,  function ($query) use ($work) {
+                   return $query->update(['work'=> $work]);});
+                   
+        $workSave ->when($notice,  function ($query) use ($notice) {
+                   return $query->update(['notice'=> $notice]);});
+   
+        $workSave ->when($condition,  function ($query) use ($condition) {
+                   return $query->update(['condition'=> $condition]);});
+                   
+        $workSave ->when($error,  function ($query) use ($error) {
+                   return $query->update(['typeError'=> $error]);});
+                   
+    
+        \Session::flash('status', 'Работа сделана');
+ 
+        return redirect('/');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Lifterror  $lifterror
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Lifterror $lifterror)
+    public function search(Request $request)
     {
-        //
-    }
+
+    $date = $request->date;   
+    $address = $request->address;
+    $typeLift = $request->typeLift;
+    $front = $request->front;     
+    $dateRequest = Carbon::now()->subDay($date);
+    
+    $lifts = Lifterror :: where('date','>=', $dateRequest)  
+    
+          ->when($address, function ($query) use ($address) {
+                    return $query->where('address', '=', $address);}) 
+            
+          ->when($front, function ($query) use ($front) {
+                    return $query->where('front', '=', $front);}) 
+
+           -> when($typeLift, function ($query) use ($typeLift) {
+                      return $query->where('typeLift', '=', $typeLift);})  
+         ->orderBy('date', 'desc')
+         ->paginate(40);
+       
+   
+    return view('requestBookSearch', compact('lifts')); 
+  }
+
+  public function delete(Lifterror $id)
+  {
+    $id->delete();
+    return redirect('requestBook');
+  }
+
 }

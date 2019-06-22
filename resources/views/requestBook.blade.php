@@ -11,7 +11,7 @@
         </p>
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
-              <form class="drop-form" method="get" action="{{route('search')}}">
+              <form class="drop-form" method="get" action="{{route('searchLift')}}">
                 {{-- Form include --}}
                 @include('form.request.request')
                 {{csrf_field()}}
@@ -34,7 +34,7 @@
               </tr>
             </thead>
             <tbody>
-            @foreach($lifts as $lift)
+            @foreach($lifterrors as $lift)
               <tr>
                 <td>{{ Carbon\Carbon::parse($lift ->date )->format('d-m')}}</td>
                 <td>{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</td>    
@@ -45,7 +45,7 @@
             @endforeach
           </tbody>
         </table>
-        {{$lifts->links()}}
+        {{$lifterrors->links()}}
       </div>
     </div>
   </div>     

@@ -14,201 +14,52 @@
 <div class="content main-content">
   <div class="layer">
     <div class="container">
-      <div class="row"> 
-        <div class="owl-carousel">
-          <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-                <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div>
-          <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div> <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div> <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div> <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div> <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div> <div>
-            <div class="card task-card">
-              <img src="img/mex_lift.jpg" alt="" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: 22-02-2019
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="address">
-                  Адрес: Оптиков 15
-                </div>
-                <div class="lift-type">
-                  Лифт: пассажирский
-                </div>
-                <div class="task">
-                  Задача: нужно починить
-                </div>
-                <div class="assignee">
-                  Добавил: Пупкин Вася
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Выполнено</button>
-            </div>
-          </div>
-        </div>
+      <div class="row">
 
         <div class="action-buttons">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#more">
+          <button type="button" class="round green" data-toggle="modal" data-target="#more">
             Добавить заявку
           </button>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
             Добавить ТО
           </button>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTask">
-            Добавить задачу
-          </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addWork">
             Добавить доп. работы
           </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addWork">            
+            Добавить задачу
+          </button>
         </div>
+
+        <div class="owl-carousel">
+          @foreach($tasks as $task)
+          <div>
+            <div class="card task-card">
+              <img src= {{$task -> fotoTask}}  alt="Image task" class="image">
+              <div class="description">
+                <div class="date">
+                  Дата: {{Carbon\Carbon::parse($task->created_at)->format('d-m-y')}}
+                </div>
+                <div class="address">
+                  Адрес: {{$task -> address}}-{{$task -> front}}-{{$task -> typeLift}}
+                </div>               
+                <div class="task">
+                  Задача: {{$task -> task}}
+                </div>
+                <div class="assignee">
+                  Добавил: {{$task -> human}}
+                </div>
+              </div>
+                <form class="modal-form" method="post"  action="{{route('taskUpdate')}}">
+                  <input type="hidden" name='id' value="{{$task -> id}}"> 
+                  <input type="hidden" name='condition' value="Выполнено"> 
+                  <button type="submit" class="btn btn-primary">Выполнено</button>
+                    {{csrf_field()}}
+                </form>
+            </div>
+          </div>
+          @endforeach  
+        </div>        
 
         <div class="modal" id="add">
           <div class="modal-dialog">
@@ -238,7 +89,7 @@
                 <h4 class="modal-title">Новая Заявка</h4>
               </div>
               <div class="modal-body">
-                <form class="form" id="more_form" method="POST" action="{{route('liftStore')}}">
+                <form class="form" id="more_form" method="POST" action="{{route('lifterrorStore')}}">
                   {{-- Form include --}}
                   @include('form.home.addLift')
                   {{csrf_field()}}
@@ -259,9 +110,9 @@
                 <h4 class="modal-title">Добавить Доп. работу</h4>
               </div>
               <div class="modal-body">
-                <form id="add-task_form" class="form" method="POST" enctype="multipart/form-data" action="{{route('addTask')}}">
+                <form id="add-task_form" class="form" method="POST" enctype="multipart/form-data" action="{{route('additionalworkStore')}}">
                   {{-- Form include --}}
-                  @include('form.home.addTask')
+                  @include('form.home.addAdditionalwork')
                   {{csrf_field()}}
                 </form>
               </div>
@@ -280,9 +131,9 @@
                 <h4 class="modal-title">Добавить Задачу</h4>
               </div>
               <div class="modal-body">
-                <form id="add-work_form" class="form" method="POST" action="{{route('addАdditionalWork')}}">
+                <form class="form" method="POST" enctype="multipart/form-data" role="form"   action="{{route('taskStore')}}">
                   {{-- Form include --}}
-                  @include('form.home.addAdditionalWork')
+                  @include('form.home.addTask')
                   {{csrf_field()}}
                 </form>
               </div>
@@ -295,63 +146,43 @@
         </div>
       </div>
 
-      <div id="accordion">
-        <div class="card text-danger ">
-          <div class="card-header " id="headingOne">
-            <h5 class="mb-0  ">
-              <button class="btn btn-link  " data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Более 5 поломок за месяц
-              </button>
-            </h5>
-          </div>
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-              <ol>            
-              @foreach($liftReturns30_5 as $lift)
-              <li><a href="{{route('search',['date' => 31, 'address' => $lift ->address, 'front' => $lift ->front, 'typeOfLift' => $lift ->typeOfLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</a></li>
-              @endforeach
-              </ol>
-             </div>
-          </div>
+      <div class="table-responsive-sm"> 
+          <table class="table  table-hover" >
+            <thead >
+              <tr>  
+                <th scope="col">Более 5 поломок за месяц</th>
+                <th scope="col">Более 3 поломок за 15 дне</th>      
+                <th scope="col">Более 2 поломок за 7 дней</th> 
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <ol>            
+                    @foreach($liftReturns30_5 as $lift)
+                    <li><a href="{{route('searchLift',['date' => 31, 'address' => $lift ->address, 'front' => $lift ->front, 'typeLift' => $lift ->typeLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeLift}}</a></li>
+                    @endforeach
+                  </ol>
+                </td>
+                <td>
+                  <ol>            
+                    @foreach($liftReturns30_5 as $lift)
+                    <li><a href="{{route('searchLift',['date' => 31, 'address' => $lift ->address, 'front' => $lift ->front, 'typeLift' => $lift ->typeLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeLift}}</a></li>
+                    @endforeach
+                  </ol>
+                </td>
+                <td> 
+                  <ol>
+                    @foreach($liftReturns7_2 as $lift)
+                    <li><a   href="{{route('searchLift',['date' => 7, 'address' => $lift ->address, 'front' => $lift ->front, 'typeLift' => $lift ->typeLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeLift}}</a></li>
+                    @endforeach
+                  </ol>
+                </td>
+              </tr>
+            </tbody>
+          </table>       
         </div>
-        <div class="card text-danger">
-          <div class="card-header" id="headingTwo">
-            <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Более 3 поломок за 15 дней
-              </button>
-            </h5>
-          </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-          <div class="card-body">
-            <ol>
-              @foreach($liftReturns16_3 as $lift)
-              <li><a href="{{route('search',['date' => 16, 'address' => $lift ->address, 'front' => $lift ->front, 'typeOfLift' => $lift ->typeOfLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</a></li>
-              @endforeach
-            </ol>
-          </div>
-        </div>
-        </div>
-        <div class="card text-danger">
-          <div class="card-header" id="headingThree">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Более 2 поломок за неделю
-              </button>
-            </h5>
-          </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-          <div class="card-body">
-            <ol>
-              @foreach($liftReturns7_2 as $lift)
-              <li><a   href="{{route('search',['date' => 7, 'address' => $lift ->address, 'front' => $lift ->front, 'typeOfLift' => $lift ->typeOfLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</a></li>
-               @endforeach
-            </ol>
-          </div>
-        </div>
-        </div>
-      </div>
-      
+
       <div class="row">
         <div class="tabs main-tabs">
           <ul class="nav nav-tabs" id="mainTab" role="tablist">
@@ -359,19 +190,17 @@
               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#stopped" role="tab" aria-controls="stopped" aria-selected="true">Остановлен</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#current" role="tab" aria-controls="current" aria-selected="false">Текущее</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#someday" role="tab" aria-controls="someday" aria-selected="false">Отложено</a>
-            </li>
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#current" role="tab" aria-controls="current" aria-selected="false">Еще не ходил</a>
+            </li>            
           </ul>                        
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="stopped" role="tabpanel" aria-labelledby="stopped-tab">
               <ul id="notes" class="notes stopped">
-								@foreach($liftsStop as $lift)											
+                @foreach($liftsStop as $lift)                     
                 <li class="col">
                   <p class="date">Дата заявки: <span>{{Carbon\Carbon::parse($lift -> date)->format('d-m-Y ')}}</span></p>
-                  <p class="address">Адрес: <span>{{$lift -> address}}-{{$lift -> front}}-{{$lift -> typeOfLift}}</span></p>
+                  <p class="address">Адрес: <span>{{$lift -> address}}-{{$lift -> front}}-{{$lift -> typeLift}}</span></p>
+                  <p class="human">Автор: <span>{{$lift -> human}}</span></p>
                   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#stopped-{{$lift -> id}}">Подробнее</button>
                 </li>                             
                 @endforeach 
@@ -382,23 +211,13 @@
                 @foreach($liftsTime as $lift)
                 <li class="col">
                   <p class="date">Дата заявки: <span>{{Carbon\Carbon::parse($lift -> date)->format('d-m-Y ')}}</span></p>
-                  <p class="address">Адрес: <span>{{$lift -> address}}-{{$lift -> front}}-{{$lift -> typeOfLift}}</span></p>
+                  <p class="address">Адрес: <span>{{$lift -> address}}-{{$lift -> front}}-{{$lift -> typeLift}}</span></p>
+                  <p class="human">Автор: <span>{{$lift -> human}}</span></p>
                   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#stopped-{{$lift -> id}}">Подробнее</button>
                 </li>
                 @endforeach 
               </ul>
-            </div>
-            <div class="tab-pane fade" id="someday" role="tabpanel" aria-labelledby="someday-tab">
-              <ul id="notes" class="notes someday">
-                @foreach($lifts as $lift)
-                <li class="col">
-                  <p class="date">Дата заявки: <span>{{Carbon\Carbon::parse($lift -> date)->format('d-m-Y ')}}</span></p>
-                  <p class="address">Адрес: <span>{{$lift -> address}}-{{$lift -> front}}-{{$lift -> typeOfLift}}</span></p>
-                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#stopped-{{$lift -> id}}">Подробнее</button>
-                </li>
-                @endforeach 
-              </ul>
-            </div>
+            </div>            
           </div>
         </div>
       </div>
@@ -407,7 +226,7 @@
 </div> 
  
 @foreach($liftAll as $lift) 
-<div class="modals">	                        
+<div class="modals">                          
   <div class="modal fade" id="stopped-{{$lift -> id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -418,10 +237,10 @@
                 </button>
             </div>
             <div class="modal-body">
-              <p class="sub-title">Адрес: <span>{{$lift -> address}}-{{$lift -> front}}-{{$lift -> typeOfLift}}</span></p>
-              <p class="sub-title">Ошибка: <span>{{$lift -> typeOfError}}</span></p>
-              <p class="sub-title">Заметка Механика: <span>{{$lift -> notice}}</span></p>
-              <form class="modal-form" method="post"  action="{{route('workUpdate')}}">
+              <p class="sub-title">Адрес: <span>{{$lift -> address}}-{{$lift -> front}}-{{$lift -> typeLift}}</span></p>
+              <p class="sub-title">Ошибка: <span>{{$lift -> typeError}}</span></p>
+              <p class="sub-title">Заметка Механика: <span>{{$lift -> notice}} {{$lift -> work}}</span></p>
+              <form class="modal-form" method="post"  action="{{route('lifterrorUpdate')}}">
                     {{-- Form include --}}
                     @include('form.home.modal')                 
                     {{csrf_field()}}

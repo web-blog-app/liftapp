@@ -35,7 +35,7 @@
               </a>
             </li>
             <li>
-              <a href="{{route('search')}}" class="fadeInUp animated">
+              <a href="{{route('requestBook')}}" class="fadeInUp animated">
                 <i class="fa fa-book fa-lg" aria-hidden="true"></i>
                    журнал заявок
                   <span></span>
@@ -82,7 +82,7 @@
             </a>
           </li>
           <li>
-            <a href="{{route('search')}}" class="fadeInUp animated">
+            <a href="{{route('requestBook')}}" class="fadeInUp animated">
               <i class="fa fa-book fa-lg" aria-hidden="true"></i>
                 журнал заявок
                 <span></span>

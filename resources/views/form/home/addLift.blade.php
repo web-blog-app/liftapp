@@ -13,8 +13,7 @@
         <option value="" selected="" disabled="">Cостояние лифта:</option>
         <option value="Запущен">Запущен</option>
         <option value="Остановлен">Остановлен</option>
-        <option value="Текущая заявка">Текущая заявка </option>
-        <option value="Недоделано">Недоделано </option> 
+        <option value="Текущая заявка">Еще не ходил </option>
     </select>
 </div> 
 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

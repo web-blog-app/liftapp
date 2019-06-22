@@ -7,13 +7,12 @@ use Carbon\Carbon;
 
 class Changedetail extends Model
 {
-
-protected $fillable= ['address',
-											'front',
-											'typeLift',    											
-											'detail',
-											'notice',
-											'human',
+	protected $fillable= ['address',
+												'front',
+												'typeLift',    											
+												'detail',
+												'notice',
+												'human',
 																	];
 
  

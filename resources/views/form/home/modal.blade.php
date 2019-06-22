@@ -1,7 +1,12 @@
 
-<div class="form-group">
-  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="№ ошибки:" name="error" >
-</div>                      
+<div class="row">
+  <div class="form-group col-md-6 col-sm-6">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="№ ошибки:" name="error" >
+  </div> 
+  <div class="form-group col-md-6 col-sm-6">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Этаж:" name="floor" >
+  </div> 
+</div>            
 <div class="form-group">
   <label for="mech-notice">Заметка механика:</label>
   <textarea class="form-control" id="mech-notice" rows="2" name="notice" ></textarea>

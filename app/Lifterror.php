@@ -6,12 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
 class Lifterror extends Model
-{
-
- 
-
-     
-
+{ 
  protected $fillable= [ 'date',
   											'address',
   											'front',
@@ -23,8 +18,5 @@ class Lifterror extends Model
       									'human',
       									'seizing',
       									'floor'
-      								];
-
-
- 
+                      ]; 
 }
