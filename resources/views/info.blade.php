@@ -46,10 +46,10 @@
               <td>{{$additionalWork -> additionalWorks}}</td>
               <td>{{$additionalWork -> humans}}</td>
               <td>
-                <form class="modal-form" method="post"  action="{{route('additionalWorkUpdate')}}">
+                <form class="modal-form" method="post"  action="{{route('additionalworkUpdate')}}">
                   <input type="hidden" name='id' value="{{$additionalWork -> id}}"> 
                   <input type="hidden" name='pay' value="Оплачено"> 
-                  <button type="submit" class="btn btn-primary">Оплачено</button>   
+                  <button type="submit" class=" btn-primary"><i class="fas fa-check"></i></button>   
                   {{csrf_field()}}
                 </form>                 
               </td>

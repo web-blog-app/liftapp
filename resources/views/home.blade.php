@@ -14,52 +14,22 @@
 <div class="content main-content">
   <div class="layer">
     <div class="container">
-      <div class="row">
+      <div class="row"> 
 
         <div class="action-buttons">
-          <button type="button" class="round green" data-toggle="modal" data-target="#more">
+          <button type="button" class="boxShadow" data-toggle="modal" data-target="#more">
             Добавить заявку
           </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
+          <button type="button" class="boxShadow" data-toggle="modal" data-target="#add">
             Добавить ТО
           </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTask">
-            Добавить доп. работы
+          <button type="button" class="boxShadow" data-toggle="modal" data-target="#addTask">
+            Добавить допы
           </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addWork">            
+          <button type="button" class="boxShadow" data-toggle="modal" data-target="#addWork">            
             Добавить задачу
           </button>
         </div>
-
-        <div class="owl-carousel">
-          @foreach($tasks as $task)
-          <div>
-            <div class="card task-card">
-              <img src= {{$task -> fotoTask}}  alt="Image task" class="image">
-              <div class="description">
-                <div class="date">
-                  Дата: {{Carbon\Carbon::parse($task->created_at)->format('d-m-y')}}
-                </div>
-                <div class="address">
-                  Адрес: {{$task -> address}}-{{$task -> front}}-{{$task -> typeLift}}
-                </div>               
-                <div class="task">
-                  Задача: {{$task -> task}}
-                </div>
-                <div class="assignee">
-                  Добавил: {{$task -> human}}
-                </div>
-              </div>
-                <form class="modal-form" method="post"  action="{{route('taskUpdate')}}">
-                  <input type="hidden" name='id' value="{{$task -> id}}"> 
-                  <input type="hidden" name='condition' value="Выполнено"> 
-                  <button type="submit" class="btn btn-primary">Выполнено</button>
-                    {{csrf_field()}}
-                </form>
-            </div>
-          </div>
-          @endforeach  
-        </div>        
 
         <div class="modal" id="add">
           <div class="modal-dialog">
@@ -144,45 +114,102 @@
             </div>
           </div>
         </div>
+      
+      @if($tasks->count())
+       <div class="owl-carousel">
+          @foreach($tasks as $task)
+          <div>
+            <div class="card task-card">
+              <img src= {{$task -> fotoTask}}  alt="Image task" class="image">
+              <div class="description">
+                <div class="date">
+                  Описание задачи:
+                </div>
+                <div class="date">
+                  Дата: {{Carbon\Carbon::parse($task->created_at)->format('d-m-y')}}
+                </div>
+                <div class="address">
+                  Адрес: {{$task -> address}}-{{$task -> front}}-{{$task -> typeLift}}
+                </div>               
+                <div class="task">
+                  Задача: {{$task -> task}}
+                </div>
+                <div class="assignee">
+                  Добавил: {{$task -> human}}
+                </div>
+              </div>
+                <form class="modal-form" method="post"  action="{{route('taskUpdate')}}">
+                  <input type="hidden" name='id' value="{{$task -> id}}"> 
+                  <input type="hidden" name='condition' value="Выполнено"> 
+                  <button type="submit" class="btn btn-primary">Выполнено</button>
+                    {{csrf_field()}}
+                </form>
+            </div>
+          </div>
+          @endforeach  
+        </div> 
       </div>
+      @endif
+    
+    <div class="list-group">
+      <div class="list-group-item list-group-item-action ">
+      <div class="d-flex w-100 justify-content-between">
+        <h3 class="mb-1">Более 5 поломок</h3>
+        <small>за 1 месяц</small>
+    </div>
+    @if($liftReturns30_5->count()) 
+   <ol>
+    @foreach($liftReturns30_5 as $lift)                   
+      <li><a href="{{route('searchLift',['date' => 31, 'address' => $lift ->address, 'front' => $lift ->front, 'typeLift' => $lift ->typeLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeLift}}</a></li>
+      @endforeach
+    </ol>
+    @else
+    <p class="mb-3">Таких лифтов пока не наблюдается. Так держать!</p>
+    @endif
+    <small>Стоит обратить внимание</small>
+  </div>
+  <div class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h3 class="mb-1">Более 3 поломок</h3>
+      <small class="text-muted">за 15 дней</small>
+    </div>
+     <p class="mb-3">
+     @if($liftReturns16_3->count()) 
+      @foreach($liftReturns16_3 as $lift)
+      <ol>
+        <li>
+          <a  href="{{route('searchLift',['date' => 16, 'address' => $lift ->address, 'front' => $lift ->front, 'typeLift' => $lift ->typeLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeLift}}</a>
+        </li>
+      </ol>  
+      @endforeach        
+      @else
+        Удивительно, но таких лифтов нет!     
+       @endif
+      </p>   
+    <small class="text-muted">Что-то пошло не так!</small>
+  </div>
 
-      <div class="table-responsive-sm"> 
-          <table class="table  table-hover" >
-            <thead >
-              <tr>  
-                <th scope="col">Более 5 поломок за месяц</th>
-                <th scope="col">Более 3 поломок за 15 дне</th>      
-                <th scope="col">Более 2 поломок за 7 дней</th> 
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <ol>            
-                    @foreach($liftReturns30_5 as $lift)
-                    <li><a href="{{route('searchLift',['date' => 31, 'address' => $lift ->address, 'front' => $lift ->front, 'typeLift' => $lift ->typeLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeLift}}</a></li>
-                    @endforeach
-                  </ol>
-                </td>
-                <td>
-                  <ol>            
-                    @foreach($liftReturns30_5 as $lift)
-                    <li><a href="{{route('searchLift',['date' => 31, 'address' => $lift ->address, 'front' => $lift ->front, 'typeLift' => $lift ->typeLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeLift}}</a></li>
-                    @endforeach
-                  </ol>
-                </td>
-                <td> 
-                  <ol>
-                    @foreach($liftReturns7_2 as $lift)
-                    <li><a   href="{{route('searchLift',['date' => 7, 'address' => $lift ->address, 'front' => $lift ->front, 'typeLift' => $lift ->typeLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeLift}}</a></li>
-                    @endforeach
-                  </ol>
-                </td>
-              </tr>
-            </tbody>
-          </table>       
-        </div>
-
+  <div class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h3 class="mb-1">Более 2 поломок</h3>
+      <small class="text-muted">за 7 дней</small>
+    </div>
+    <p class="mb-3">
+     @if($liftReturns7_2->count()) 
+      @foreach($liftReturns7_2 as $lift)      
+         <ol>
+        <li>
+          <a  href="{{route('searchLift',['date' => 7, 'address' => $lift ->address, 'front' => $lift ->front, 'typeLift' => $lift ->typeLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeLift}}</a>
+        </li>
+      </ol> 
+      @endforeach        
+      @else
+        Удивительно, но таких лифтов нет!     
+        @endif
+      </p>
+    <small class="text-muted">Нужно разгадать эту загадку!</small>
+  </div>
+</div>
       <div class="row">
         <div class="tabs main-tabs">
           <ul class="nav nav-tabs" id="mainTab" role="tablist">
@@ -192,21 +219,23 @@
             <li class="nav-item">
               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#current" role="tab" aria-controls="current" aria-selected="false">Еще не ходил</a>
             </li>            
-          </ul>                        
+          </ul>
+
           <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="stopped" role="tabpanel" aria-labelledby="stopped-tab">
-              <ul id="notes" class="notes stopped">
-                @foreach($liftsStop as $lift)                     
+            <div class="tab-pane active" id="stopped" role="tabpanel" aria-labelledby="stopped-tab"> 
+            <ul id="notes" class="notes stopped">             
+                @foreach($liftsStop as $lift)                                     
                 <li class="col">
                   <p class="date">Дата заявки: <span>{{Carbon\Carbon::parse($lift -> date)->format('d-m-Y ')}}</span></p>
                   <p class="address">Адрес: <span>{{$lift -> address}}-{{$lift -> front}}-{{$lift -> typeLift}}</span></p>
                   <p class="human">Автор: <span>{{$lift -> human}}</span></p>
                   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#stopped-{{$lift -> id}}">Подробнее</button>
-                </li>                             
-                @endforeach 
-              </ul>
+                </li>                                            
+                @endforeach  
+                </ul>              
             </div>
-            <div class="tab-pane fade" id="current" role="tabpanel" aria-labelledby="profile-tab">
+
+            <div class="tab-pane fade  " id="current" role="tabpanel" aria-labelledby="profile-tab">
               <ul id="notes" class="notes current">
                 @foreach($liftsTime as $lift)
                 <li class="col">

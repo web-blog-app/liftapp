@@ -26,21 +26,51 @@
               <tr>
                 <th scope="col">Дата</th>
                 <th scope="col">Адрес</th>
-                <th scope="col">Ошибка</th> 
-                <th class="hide-note" scope="col">Этаж</th> 
-                <th class="hide-note" scope="col">Вид заявки</th> 
-                <th class="hide-note" scope="col">Заметка механика</th> 
-                <th scope="col">Проделанная работа</th> 
+                <th scope="col">Ошибка</th>
+                <th class="hide-note"  scope="col">Этаж</hd>              
+                <th class="hide-note">Заметка механика</th> 
+                <th scope="col">Проделанная работа</th>
+                <th class="hide-note">Механик</hd>
+                <th scope="col" class="hide-note"></th>  
               </tr>
             </thead>
             <tbody>
+
             @foreach($lifterrors as $lift)
               <tr>
-                <td>{{ Carbon\Carbon::parse($lift ->date )->format('d-m')}}</td>
-                <td>{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeOfLift}}</td>    
-                <td>{{$lift ->typeOfError}}</td>
+                <td>{{ Carbon\Carbon::parse($lift ->date )->format('d-m')}}
+                  <div class="hide-max">                  
+                  {{$lift ->human}}
+                  </div>
+                </td>
+                <td>{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeLift}}</td>    
+                <td>{{$lift ->typeError}}
+                  <div class="hide-max">
+                  @if(isset($lift->floor))
+                  <br>
+                  Этаж:{{$lift -> floor}}
+                 @endif
+               </div>
+               </td>
+                <td class="hide-note">{{$lift->floor}}</td>
                 <td class="hide-note">{{$lift ->notice}}</td>
-                <td >{{$lift ->work}}</td>
+                <td >
+                  Тип заявки: {{$lift -> seizing}}
+                  <br>
+                  {{$lift ->work}}
+                </td>
+                  <td class="hide-note">{{$lift ->human}}</td>
+
+                <td class="hide-note">
+                  @if( Auth::user()->name  == $lift->human or Auth::user()->role_id == '1')              
+                  <form onsubmit="if (confirm('Удалить запись?')) {return true} else {return false}" method="POST" action="{{route('deleteLift',['id' => $lift->id])}}" >
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-warning btn-sm ">Удалить</button>
+                    {{csrf_field()}}
+                  </form>
+                
+              @endif
+                </td>
               </tr>
             @endforeach
           </tbody>

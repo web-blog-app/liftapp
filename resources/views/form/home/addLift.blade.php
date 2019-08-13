@@ -1,7 +1,7 @@
 <div class="row">
 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="date">Дата</label>   
-    <input type="date" class="form-control form-control-sm" todayButton="true" name="date" required="" />
+    <input type="date" class="form-control form-control-sm" value="{{Carbon\Carbon::now()->format('Y-m-d')}}" todayButton="true" name="date" required="" />
 </div>
 
    {{-- Form include --}}
@@ -18,7 +18,7 @@
 </div> 
 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="typeOfError">№ ошибки:</label>
-    <textarea class="form-control" id="typeOfError" rows="1" name="typeOfError"></textarea>
+    <textarea class="form-control" id="typeOfError" rows="1" name="typeError"></textarea>
 </div> 
 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="floor">№ этажа:</label>

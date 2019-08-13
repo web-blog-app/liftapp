@@ -1,13 +1,11 @@
 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="address">Адрес дома:</label>
     <select class="form-control form-control-sm" size="1" name="address"  required="">
-        <option value="" selected="" disabled="">Адрес дома:</option>
-        <option value="Оптиков 45 к1">Оптиков 45 к1</option>
+        <option value="" selected="" disabled="">Адрес дома:</option>        
         <option value="Оптиков 45 к2">Оптиков 45 к2</option>
         <option value="Оптиков 49">Оптиков 49</option>
         <option value="Оптиков 50">Оптиков 50</option>
-        <option value="Оптиков 52">Оптиков 52</option>
-        <option value="Туристская 11">Туристская 11</option>
+        <option value="Оптиков 52">Оптиков 52</option>        
         <option value="Туристская 15">Туристская 15</option>
         <option value="Туристская 18">Туристская 18</option>
         <option value="Туристская 28">Туристская 28</option>

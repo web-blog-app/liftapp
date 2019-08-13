@@ -1,13 +1,12 @@
 <header class="header">
   <div class="container">
     <div class="row">
-      <div class="login-menu menu">
-        <div class="navbar-brand">
-          <img class="logo" src="img/lift.png" alt="{{ setting('kit.header.title') }}">
-          
-        </div>
+      <div class="login-menu menu"> 
+
+          <img class="logo" src="img/lift.png" alt="{{ setting('kit.header.title') }}">          
+        
         <div class="user-container dropdown">
-          <img class="user" src="img/default.png" alt="">
+          <img class="user" src="img/default.png" alt="Foto {{ Auth::user()->name }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               {{ Auth::user()->name }} 
             </a>
@@ -28,36 +27,31 @@
         <div class="menu-items">
           <ul>
             <li>
-              <a href="{{route('home')}}" class="fadeInUp animated">
-                <i class="fa fa-book fa-lg" aria-hidden="true"></i>
+              <a href="{{route('home')}}" class="fadeInUp animated">               
                    текущие заявки
                   <span></span>
               </a>
             </li>
             <li>
-              <a href="{{route('requestBook')}}" class="fadeInUp animated">
-                <i class="fa fa-book fa-lg" aria-hidden="true"></i>
+              <a href="{{route('requestBook')}}" class="fadeInUp animated">               
                    журнал заявок
                   <span></span>
               </a>
             </li>
             <li>
-              <a href="{{route('detail')}}" class="fadeInUp animated">
-                <i class="fa fa-microchip fa-lg" aria-hidden="true"></i>
+              <a href="{{route('detail')}}" class="fadeInUp animated">               
                   заказ запчастей
                   <span></span>
               </a>
             </li>
             <li>
-              <a href="{{route('changeDetail')}}" class="fadeInUp animated">
-                <i class="fa fa-refresh fa-lg" aria-hidden="true"></i>
+              <a href="{{route('changeDetail')}}" class="fadeInUp animated">              
                   тех. обслуживание
                   <span></span>
               </a>
             </li>
             <li>
-              <a href="{{route('info')}}" class="fadeInUp animated">
-                <i class="fa fa-refresh fa-lg" aria-hidden="true"></i>
+              <a href="{{route('info')}}" class="fadeInUp animated">                
                   информация
                   <span></span></a>
             </li>                        
@@ -75,36 +69,31 @@
       <div class="top-menu" style="display: none;">
         <ul>
           <li>
-            <a href="{{route('home')}}" class="fadeInUp animated">
-              <i class="fa fa-book fa-lg" aria-hidden="true"></i>
+            <a href="{{route('home')}}" class="fadeInUp animated">              
                 текущие заявки
                 <span></span>
             </a>
           </li>
           <li>
-            <a href="{{route('requestBook')}}" class="fadeInUp animated">
-              <i class="fa fa-book fa-lg" aria-hidden="true"></i>
+            <a href="{{route('requestBook')}}" class="fadeInUp animated">              
                 журнал заявок
                 <span></span>
             </a>
           </li>
           <li>
-            <a href="{{route('detail')}}" class="fadeInUp animated">
-              <i class="fa fa-microchip fa-lg" aria-hidden="true"></i>
+            <a href="{{route('detail')}}" class="fadeInUp animated">              
                 заказ запчастей
                 <span></span>
             </a>
           </li>
           <li>
-            <a href="{{route('changeDetail')}}" class="fadeInUp animated">
-              <i class="fa fa-refresh fa-lg" aria-hidden="true"></i>
+            <a href="{{route('changeDetail')}}" class="fadeInUp animated">              
                 тех. обслуживание
                 <span></span>
             </a>
           </li>
           <li>
-            <a href="{{route('info')}}" class="fadeInUp animated">
-              <i class="fa fa-refresh fa-lg" aria-hidden="true"></i>
+            <a href="{{route('info')}}" class="fadeInUp animated">              
                 информация
                 <span></span>
             </a>

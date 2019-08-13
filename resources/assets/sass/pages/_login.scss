@@ -1,5 +1,5 @@
 .header {
-  background-color: $c-login-bg;
+  background-color: $c-footer-bg;
   color: #fff;
   padding: 15px;
 
@@ -19,7 +19,7 @@
 
 .login-content,
 .main-content {
-  background: linear-gradient( rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2)100%), url("../img/login-bg.jpg") no-repeat;
+  background: linear-gradient( rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.2)100%), url("http://localhost/lift/public/img/login-bg.jpg") no-repeat;
   background-size: cover;
 
   .row {

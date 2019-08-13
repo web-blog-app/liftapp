@@ -32,7 +32,7 @@ class TaskController extends Controller
 			Task::create($request->all());
 		}
 
-		\Session::flash('status', 'Новая задача успешно добавлена!');
+		
 		
 		return redirect('/');
 		}
