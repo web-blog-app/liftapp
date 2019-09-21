@@ -1,0 +1,1 @@
+[24-Jun-2018 18:15:31 Europe/Moscow] PHP Fatal error:  Cannot redeclare App\Http\Controllers\IndexController::addLift() in /home/liftboo1/public_html/app/Http/Controllers/IndexController.php on line 223

@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
  	Route::get('/requestBook', 'RequestbookController@show'
 	)-> name('requestBook');
 
- 	Route::get('/requestBook/search', 'LifterrorController@search'
+ 	Route::get('/requestBookSearch', 'LifterrorController@search'
 	)-> name('searchLift');
 
  	Route::get('detail', 'DetailPageController@detailShow'
@@ -59,9 +59,8 @@ Route::group(['middleware' => 'auth'], function () {
 	)-> name('addChengeDetail');
 
 	Route::get('ChengeDetail/search', 'ChengeDetailController@search'
-	)-> name('searchChengeDetail');
-
-	Route::get('info', 'InfoController@show'
+	)-> name('searchChengeDetail');	
+		Route::get('info', 'InfoController@show'
 	);
 
 	Route::post('info', 'InfoController@show'

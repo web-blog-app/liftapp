@@ -14,9 +14,7 @@ class LifterrorController extends Controller
      
     public function store(CreateLifterrorRequest $request)
     {
-        Lifterror::create($request->all()); 
-
-        \Session::flash('status', 'Заявка успешно добавлена');
+        Lifterror::create($request->all());        
 
         return redirect('/');
     }

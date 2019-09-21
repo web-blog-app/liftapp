@@ -1,9 +1,5 @@
-<div class="form-group col-md-4 col-sm-6 col-xs-12">
-	<label style="color:#fff;">Кол-во дней от теккущей даты:</label>
-  <input type="range" min="1" max="1000" name="date" id="date"  onchange="document.getElementById('rangeValue').innerHTML = this.value;"
-> <span id="rangeValue" style="color:#fff;">500</span>                                   
-</div>
-<div class="form-group  col-md-4 col-sm-6 col-xs-12">
+<div class="row">
+	 <div class="form-group  col-md-3 col-sm-4 col-xs-6">
     
     <select class="form-control form-control-sm" size="1" name="address"  required="">
         <option value="" selected="" disabled="">Адрес дома:</option>        
@@ -15,13 +11,14 @@
         <option value="Туристская 18">Туристская 18</option>
         <option value="Туристская 28">Туристская 28</option>
         <option value="Лыжная 3">Лыжная 3</option>
-        <option value="Лыжная 4">Лыжная 4</option>        
+        <option value="Лыжная 4">Лыжная 4</option>
+        <option value="Лыжная 10">Лыжная 10</option>
         <option value="Мебельная 19">Мебельная 19</option>
    </select>
 </div>
-<div class="form-group col-md-4 col-sm-6 col-xs-12">
+<div class="form-group col-md-3 col-sm-4 col-xs-6">
     
-    <select class="form-control form-control-sm" size="1" name="front" >
+    <select class="form-control form-control-sm" size="1" name="front" required="">
         <option value="" selected="" disabled=""> № парадной:</option>
         <option value="1">1 парадная</option>
         <option value="2">2 парадная</option>
@@ -36,9 +33,9 @@
         <option value="11">11 парадная</option>
     </select>
 </div>
-<div class="form-group  col-md-4 col-sm-6 col-xs-12">
-    
-    <select class="form-control form-control-sm" size="1" name="typeLift" >
+<div class="form-group col-md-3 col-sm-4 col-xs-6">
+   
+    <select class="form-control form-control-sm" size="1" name="typeLift" required="">
         <option value="" selected="" disabled="">Вид лифта:</option>
         <option value="вся парадная">Вся парадная</option>
         <option value="пасс.">Пассажирский</option>
@@ -49,10 +46,25 @@
         <option value="подъемник">Подъемник</option>
     </select>
 </div>
-<div class="form-group col-md-4 col-sm-6 col-xs-12">
-  <button class="btn color_but_blue" type="submit">Поиск</button>
-</div>                                        
-                                    
-
-                                
-                                 
+<div class="form-group  col-md-3 col-sm-4 col-xs-6">
+   <input class="form-control" type="text" placeholder="Название детали:" name="detailName" required="">
+ </div>
+<div class="form-group  col-md-3 col-sm-4 col-xs-6">
+  <input class="form-control" type="text" placeholder="Серийный номен:" name="number" required="">
+</div>
+<div class="form-group col-md-3 col-sm-4 col-xs-6">
+  <input class="form-control" type="text" placeholder="Примечания" name="notice">
+</div>
+<div class="form-group col-md-3 col-sm-4 col-xs-6">
+<select class="form-control"  name="condition" required="">
+	<option disabled>Выберите состояние:</option>
+  <option value="нужно заказать">нужно заказать</option>
+  <option value="ожидание">в пути</option>
+  <option value="доставлено">доставлено</option>
+  <option value="акт подписан">акт подписан</option>
+</select>
+</div>
+<div class="form-group col-md-3 col-sm-4 col-xs-6">
+  <button class=" btn color_but_blue" type="submit">Отправить</button>
+</div>
+  </div>

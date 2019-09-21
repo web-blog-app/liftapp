@@ -7,7 +7,7 @@
     <div class="row">
       <div class="drop-container">
         <p>
-          <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Поиск по базе</button>      
+          <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Поиск по базе</button>      
         </p>
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
@@ -21,7 +21,7 @@
         </div>          
                
         <div class="table-responsive-sm">
-          <table class="table  table-hover" >
+          <table class="table  " >
             <thead >
               <tr>
                 <th scope="col">Дата</th>
@@ -58,6 +58,16 @@
                   Тип заявки: {{$lift -> seizing}}
                   <br>
                   {{$lift ->work}}
+                  <div class="hide-max">
+                   @if( Auth::user()->name  == $lift->human or Auth::user()->role_id == '1') 
+                               
+                  <form onsubmit="if (confirm('Удалить запись?')) {return true} else {return false}" method="POST" action="{{route('deleteLift',['id' => $lift->id])}}" >
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-warning btn-sm ">Удалить</button>
+                    {{csrf_field()}}
+                  </form>
+                  @endif
+                </div>
                 </td>
                   <td class="hide-note">{{$lift ->human}}</td>
 

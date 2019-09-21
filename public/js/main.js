@@ -10490,15 +10490,13 @@ $(document).ready(function () {
     }
   });
 
-  $(function () {
-    $('#myList a:last-child').tab('show');
-  });
-
   $('.wrapper_open').on('click', '.btn_open', function () {
     $(this).toggleClass('add_elevator_show').siblings('.form_hidden').slideToggle(0);
   });
 
   $('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 20,
     touchDrag: true,
     nav: true,
     responsive: {
@@ -10533,7 +10531,6 @@ $(document).ready(function () {
       data: $form.serialize(),
       contentType: "application/x-www-form-urlencoded",
       success: function success() {
-        $('#' + modalFormId).modal('hide');
         $('#' + formId)[0].reset();
         button.removeClass("disabled btn-default");
         button.addClass("btn-primary");
@@ -10542,7 +10539,6 @@ $(document).ready(function () {
       error: function error(errorThrown) {
         button.removeClass("disabled btn-default");
         button.addClass("btn-primary");
-        console.log(errorThrown);
         toastr.error('Возникла ошибка, попробуйте позже');
       }
     });

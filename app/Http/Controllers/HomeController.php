@@ -17,7 +17,7 @@ class HomeController extends Controller
     
     function liftErrorReturn($date, $num)
     {      
-      $liftErrorReturn = Lifterror:: where('date','>=',$date)                    
+      $liftErrorReturn = Lifterror:: where('date','>',$date)                    
                     ->select('address','front','typeLift')
                     ->groupBy('address','front','typeLift')
                     ->havingRaw("COUNT(*) >= '$num'")
@@ -28,7 +28,7 @@ class HomeController extends Controller
 
     $liftReturns30_5 = liftErrorReturn(Carbon::now()->subDays(30), 5);
     $liftReturns16_3 = liftErrorReturn(Carbon::now()->subDays(14), 3);             
-    $liftReturns7_2  = liftErrorReturn(Carbon::now()->subDays(7), 2);
+  
          
     $liftsStop = Lifterror::where('condition','=','остановлен')
                 ->orderBy('date', 'desc')         
@@ -38,7 +38,10 @@ class HomeController extends Controller
                 ->orderBy('date', 'desc')         
                 ->get();
 
-    $liftAll=Lifterror::all(); 
+    $liftAll=Lifterror::where('condition','=','остановлен')
+                        ->where('condition','=','текущая заявка')
+                        ->orderBy('date', 'desc')         
+                        ->get();; 
 
     $tasks = Task::
           where('condition','=','не выполнено')
@@ -46,7 +49,7 @@ class HomeController extends Controller
         ->get();  
 
     return view('home',compact('liftReturns30_5','liftReturns16_3',
-      'liftReturns7_2','tasks','liftAll','liftsStop','liftsTime'));
+      'tasks','liftAll','liftsStop','liftsTime'));
     
     }      
 

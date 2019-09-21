@@ -11,7 +11,7 @@ class TaskController extends Controller
 		
 	public function store(CreateTaskRequest $request)
 	{    
-
+		dd($request->all);
 		if ($request->hasFile('fotoTask')) {
 			$destinationPath = 'img/task';
 			$file = $request->file('fotoTask');    
@@ -31,9 +31,6 @@ class TaskController extends Controller
 			
 			Task::create($request->all());
 		}
-
-		
-		
 		return redirect('/');
 		}
 

@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="login-menu menu">
-                <div class="navbar-brand"><img class="logo" src="img/lift.png" alt="LiftBook">{{ setting('site.title')}}</div>
+                <a class="logo" href="#"><img class="logo" src="img/lift.png" alt="LiftBook">{{ setting('site.title')}}</a>
                 <div class="menu-items">
                     <ul>
                     	 @if (Auth::guest())

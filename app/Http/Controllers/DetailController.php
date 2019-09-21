@@ -28,7 +28,7 @@ public function update(Request $request){
 
   
  \Session::flash('status', 'Деталь  успешно добавлена!');
-  return redirect('detail');
+  return redirect('details');
  
  }
 }

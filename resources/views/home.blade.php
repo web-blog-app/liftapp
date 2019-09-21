@@ -2,57 +2,26 @@
 @extends('layout.site')
 @section('content')
 
-@if (Session::has('status')) 
-<div class="alert alert-success alert-dismissible fade show"  role="alert">
-  {{ Session::get('status') }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-@endif
-
 <div class="content main-content">
   <div class="layer">
     <div class="container">
       <div class="row"> 
-
         <div class="action-buttons">
           <button type="button" class="boxShadow" data-toggle="modal" data-target="#more">
             Добавить заявку
           </button>
-          <button type="button" class="boxShadow" data-toggle="modal" data-target="#add">
+          <button type="button" class="boxShadow" data-toggle="modal" data-target="#addTo">
             Добавить ТО
           </button>
-          <button type="button" class="boxShadow" data-toggle="modal" data-target="#addTask">
+          <button type="button" class="boxShadow" data-toggle="modal" data-target="#addWork">
             Добавить допы
           </button>
-          <button type="button" class="boxShadow" data-toggle="modal" data-target="#addWork">            
+          <button type="button" class="boxShadow" data-toggle="modal" data-target="#addTask">            
             Добавить задачу
           </button>
         </div>
 
-        <div class="modal" id="add">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Новое ТО</h4>
-              </div>
-              <div class="modal-body">
-                <form id="add_form" class=" form drop-form" method="POST" action="{{'addChengeDetail'}}" >
-                  {{-- Form include --}}
-                  @include('form.home.addChengeDetail')
-                  {{csrf_field()}}
-                </form>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal form-modal" id="more">
+         <div class="modal" id="more">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -65,7 +34,6 @@
                   {{csrf_field()}}
                 </form>
               </div>
-
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
               </div>
@@ -73,16 +41,36 @@
           </div>
         </div>
 
-        <div class="modal form-modal" id="addTask">
+        <div class="modal" id="addTo">
+          <div class="modal-dialog">
+            <div class="modal-content">              
+              <div class="modal-header">
+                <h4 class="modal-title">Новое ТО</h4>
+              </div>
+              <div class="modal-body">
+                <form id="add_form" class="form drop-form" method="POST" action="{{'addChengeDetail'}}" >
+                  {{-- Form include --}}
+                  @include('form.home.addChengeDetail')
+                  {{csrf_field()}}
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
+        </div>       
+
+        <div class="modal " id="addWork">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">Добавить Доп. работу</h4>
               </div>
               <div class="modal-body">
-                <form id="add-task_form" class="form" method="POST" enctype="multipart/form-data" action="{{route('additionalworkStore')}}">
-                  {{-- Form include --}}
-                  @include('form.home.addAdditionalwork')
+                <form id="add-work_form" class="form" method="POST"  action="{{route('additionalworkStore')}}">
+                  {{-- Form include --}}                  
+                  @include('form.home.addAdditionalWork')
                   {{csrf_field()}}
                 </form>
               </div>
@@ -94,14 +82,14 @@
           </div>
         </div>
 
-        <div class="modal form-modal" id="addWork">
+        <div class="modal" id="addTask">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">Добавить Задачу</h4>
               </div>
               <div class="modal-body">
-                <form class="form" method="POST" enctype="multipart/form-data" role="form"   action="{{route('taskStore')}}">
+                <form class="form" id="add_form_task"  method="POST" enctype="multipart/form-data"  action="{{route('taskStore')}}">
                   {{-- Form include --}}
                   @include('form.home.addTask')
                   {{csrf_field()}}
@@ -114,13 +102,13 @@
             </div>
           </div>
         </div>
-      
+      </div>
       @if($tasks->count())
        <div class="owl-carousel">
           @foreach($tasks as $task)
           <div>
             <div class="card task-card">
-              <img src= {{$task -> fotoTask}}  alt="Image task" class="image">
+              <img src= '{{$task -> fotoTask}}'  alt="Image task" class="image">
               <div class="description">
                 <div class="date">
                   Описание задачи:
@@ -147,8 +135,7 @@
             </div>
           </div>
           @endforeach  
-        </div> 
-      </div>
+        </div>       
       @endif
     
     <div class="list-group">
@@ -187,29 +174,9 @@
        @endif
       </p>   
     <small class="text-muted">Что-то пошло не так!</small>
-  </div>
-
-  <div class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h3 class="mb-1">Более 2 поломок</h3>
-      <small class="text-muted">за 7 дней</small>
-    </div>
-    <p class="mb-3">
-     @if($liftReturns7_2->count()) 
-      @foreach($liftReturns7_2 as $lift)      
-         <ol>
-        <li>
-          <a  href="{{route('searchLift',['date' => 7, 'address' => $lift ->address, 'front' => $lift ->front, 'typeLift' => $lift ->typeLift]) }}">{{$lift ->address}}-{{$lift ->front}}-{{$lift ->typeLift}}</a>
-        </li>
-      </ol> 
-      @endforeach        
-      @else
-        Удивительно, но таких лифтов нет!     
-        @endif
-      </p>
-    <small class="text-muted">Нужно разгадать эту загадку!</small>
-  </div>
+  </div>  
 </div>
+
       <div class="row">
         <div class="tabs main-tabs">
           <ul class="nav nav-tabs" id="mainTab" role="tablist">
@@ -279,6 +246,6 @@
     </div>
 </div>   
 @endforeach   
-@stop
+@endsection
 
 

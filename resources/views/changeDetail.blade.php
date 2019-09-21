@@ -2,21 +2,15 @@
 
 @section('content')
 
-@if (Session::has('status')) 
-<div class="alert alert-success alert-dismissible fade show"  role="alert">
-  {{ Session::get('status') }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-@endif
-
 <div class="content to-content">
   <div class="container">         
     <div class="row">
       <div class="drop-container">
+      
+     
+
         <p>
-          <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapse-toSearch" aria-expanded="false" aria-controls="collapse-toSearch">Поиск</button>
+          <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapse-toSearch" aria-expanded="false" aria-controls="collapse-toSearch">Поиск</button>
         </p>
         <div class="collapse" id="collapse-toSearch">
           <div class="card card-body">

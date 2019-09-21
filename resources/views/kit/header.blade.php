@@ -3,7 +3,7 @@
     <div class="row">
       <div class="login-menu menu"> 
 
-          <img class="logo" src="img/lift.png" alt="{{ setting('kit.header.title') }}">          
+          <a href="/"class="logo"><img class="logo" src="img/lift.png" alt="{{ setting('kit.header.title') }}">{{ setting('site.title')}}</a>          
         
         <div class="user-container dropdown">
           <img class="user" src="img/default.png" alt="Foto {{ Auth::user()->name }}">

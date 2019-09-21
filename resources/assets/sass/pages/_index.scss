@@ -7,7 +7,7 @@
 
   @media (max-width: 1024px) {
     .user-container {
-      padding-right: 50px;
+      padding-right: 45px;
     }
   }
   a {
@@ -207,9 +207,7 @@ button {
   }
 }
 
-#accordion {
-  background: rgba(245,255,255,0.9);
-}
+
 
 .card {
   background: none;
@@ -234,7 +232,7 @@ button {
 }
 
 .hide-max {
-  @media (min-width:1024px) {
+  @media (min-width:768px) {
     display: none;
   }
 }
